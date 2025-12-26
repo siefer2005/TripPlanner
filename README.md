@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TravelPlanner
 
 TravelPlanner is a cutting-edge mobile application designed to simplify and enhance your travel experiences. Built with **React Native CLI**, it leverages the power of **Artificial Intelligence** to generate personalized trip itineraries, integrates **Google Maps** for seamless navigation, and offers secure authentication via **Google OAuth 2.0**.
@@ -118,3 +119,6 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## 📄 License
 
 This project is licensed under the MIT License.
+=======
+# TripPlanner
+>>>>>>> e1626cf (Initial commit)
