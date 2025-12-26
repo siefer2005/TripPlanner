@@ -32,7 +32,11 @@ export type RootStackParamList = {
   Choose: undefined;
   Trip: { item: any } | undefined;
   Activity: undefined;
-  Define: undefined;
+  Define: {
+    name: string;
+    itinerary: any[];
+    onGoBack?: () => void;
+  };
   Map: undefined;
   Ai: undefined;
 };

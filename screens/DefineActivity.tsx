@@ -1,28 +1,23 @@
+import { RouteProp, useRoute } from '@react-navigation/native';
+import axios from 'axios';
+import moment from 'moment';
+import React, { useEffect, useRef, useState } from 'react';
 import {
+  Image,
+  Pressable,
+  SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
-  View,
-  SafeAreaView,
   TextInput,
-  Pressable,
-  Image,
-  ScrollView,
+  View,
 } from 'react-native';
-import React, { useEffect, useRef, useState } from 'react';
-import { useRoute } from '@react-navigation/native';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { BottomModal, ModalContent, SlideAnimation } from 'react-native-modals';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import axios from 'axios';
-import { BottomModal, ModalContent, SlideAnimation } from 'react-native-modals';
-import moment from 'moment';
 
-/* ----------------------------------
-   Types
------------------------------------ */
+
 
 interface RouteParams {
   name: string;
@@ -61,12 +56,9 @@ interface PhotoGalleryProps {
   apiKey: string;
 }
 
-/* ----------------------------------
-   Component
------------------------------------ */
 
 const DefineActivity: React.FC = () => {
-  const route = useRoute<{ params: RouteParams }>();
+  const route = useRoute<RouteProp<{ Define: RouteParams }, 'Define'>>();
 
   const [slot, setSlot] = useState<string>('Morning');
   const [option, setOption] = useState<string>('');
@@ -82,16 +74,12 @@ const DefineActivity: React.FC = () => {
   const [input, setInput] = useState<string>('');
   const inputRef = useRef<TextInput>(null);
 
-  /* ----------------------------------
-     Focus input on mount
-  ----------------------------------- */
+
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
-  /* ----------------------------------
-     Google Place Details
-  ----------------------------------- */
+
   const fetchPlaceDetails = async (placeId: string): Promise<void> => {
     const API_KEY = 'AIzaSyCOZJadVuwlJvZjl_jWMjEvJDbbc17fQQI';
     const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${API_KEY}`;
@@ -113,18 +101,14 @@ const DefineActivity: React.FC = () => {
   const firstDayTime =
     openingHours.length > 0 ? openingHours[0].split(': ')[1] : 'N/A';
 
-  /* ----------------------------------
-     Helpers
-  ----------------------------------- */
+
   const formatDate = (date: string): string =>
     moment(date).format('D MMMM');
 
   const getDayName = (date: string): string =>
     moment(date).format('dddd');
 
-  /* ----------------------------------
-     Slots
-  ----------------------------------- */
+
   const slots: Slot[] = [
     {
       id: '0',
@@ -146,9 +130,7 @@ const DefineActivity: React.FC = () => {
     },
   ];
 
-  /* ----------------------------------
-     Photo Gallery Component
-  ----------------------------------- */
+
   const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, apiKey }) => (
     <ScrollView
       contentContainerStyle={{
@@ -176,9 +158,7 @@ const DefineActivity: React.FC = () => {
     </ScrollView>
   );
 
-  /* ----------------------------------
-     UI
-  ----------------------------------- */
+
 
   return (
     <>
@@ -251,7 +231,7 @@ const DefineActivity: React.FC = () => {
         onBackdropPress={() => setModalVisible(false)}
         modalAnimation={new SlideAnimation({ slideFrom: 'bottom' })}>
         <ModalContent style={{ height: 700 }}>
-          {route.params?.itinerary.map((item, index) => (
+          {route.params?.itinerary?.map((item, index) => (
             <View key={index} style={{ padding: 10 }}>
               <Text>
                 {getDayName(item.date)}, {formatDate(item.date)}

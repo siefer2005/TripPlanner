@@ -1,10 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import axios from 'axios';
 import moment, { Moment } from 'moment';
 import React, { useContext, useEffect, useState } from 'react';
 import {
+    ActivityIndicator,
+    Alert,
     FlatList,
     ImageBackground,
     Modal,
@@ -13,7 +14,7 @@ import {
     StyleSheet,
     Text,
     TextInput,
-    View
+    View,
 } from 'react-native';
 import DateRangePicker from 'react-native-daterange-picker';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
@@ -73,6 +74,7 @@ const CreateTrip: React.FC = () => {
     const [tripName, setTripName] = useState<string>('');
     const [image] = useState<string>(images[0].image);
     const [background, setBackground] = useState<string>('');
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
@@ -101,10 +103,16 @@ const CreateTrip: React.FC = () => {
        Create Trip
     ----------------------------------- */
     const handleCreateTrip = async (): Promise<void> => {
-        if (!tripName || !startDate || !endDate) {
-            alert('Please fill all fields');
+        if (!tripName) {
+            Alert.alert('Missing Requirement', 'Please enter a trip name');
             return;
         }
+        if (!startDate || !endDate) {
+            Alert.alert('Missing Requirement', 'Please select start and end dates');
+            return;
+        }
+
+        setIsLoading(true);
 
         const tripData = {
             tripName,
@@ -113,35 +121,41 @@ const CreateTrip: React.FC = () => {
             startDay,
             endDay,
             timezone,
-            // ADD DEFAULT BACKGROUND
             background: background || 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop',
-            // ENSURE HOST IS NOT EMPTY (use a dummy ID if testing, or ensure login)
             host: userId || '664585c5c93f0b22f0852778', // fallback for testing
         };
 
         try {
-            const API_BASE = 'http://10.0.2.2:8000';
+            // Create trip locally 
+            const newTrip = {
+                ...tripData,
+                _id: Date.now().toString(), // Helper to generate unique ID
+                createdAt: new Date().toISOString(),
+            };
 
+            // Simulate API delay
+            await new Promise((resolve) => setTimeout(resolve, 500));
 
-            const response = await axios.post(`${API_BASE}/trip`, tripData);
-            console.log('Trip created successfully:', response.data);
+            console.log('Trip created locally:', newTrip);
 
             try {
-                await AsyncStorage.setItem('lastCreatedTrip', JSON.stringify(response.data));
+                await AsyncStorage.setItem('lastCreatedTrip', JSON.stringify(newTrip));
             } catch (storageError) {
                 console.warn('Failed to persist trip locally:', storageError);
             }
 
-            navigation.navigate('Trip', { item: response.data });
+            // Navigate to the Trip screen with the created data
+            navigation.navigate('Trip', { item: newTrip });
+
         } catch (error) {
             console.error('Error creating trip:', error);
-            alert('Error creating trip. Please check your connection.');
+            Alert.alert('Error', 'Failed to create trip. Please check your connection and try again.');
+        } finally {
+            setIsLoading(false);
         }
     };
 
-    /* ----------------------------------
-       Date Helpers
-    ----------------------------------- */
+
     const setDates = (dates: DateRange): void => {
         const toDate = (d?: Date | Moment | null): Date | null =>
             d ? moment(d).toDate() : null;
@@ -240,8 +254,16 @@ const CreateTrip: React.FC = () => {
                         <Text style={styles.cancel}>Cancel</Text>
                     </Pressable>
 
-                    <Pressable onPress={handleCreateTrip} style={styles.createBtn}>
-                        <Text style={styles.createText}>Create</Text>
+                    <Pressable
+                        onPress={handleCreateTrip}
+                        style={[styles.createBtn, isLoading && { opacity: 0.7 }]}
+                        disabled={isLoading}
+                    >
+                        {isLoading ? (
+                            <ActivityIndicator size="small" color="orange" />
+                        ) : (
+                            <Text style={styles.createText}>Create</Text>
+                        )}
                     </Pressable>
                 </View>
 
