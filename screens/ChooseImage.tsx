@@ -1,15 +1,15 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React from 'react';
 import {
+  Image,
+  Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
-  ScrollView,
-  Pressable,
-  Image,
 } from 'react-native';
-import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { RootStackParamList } from '../navigation/StackNavigator';
 

@@ -1,24 +1,26 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import axios from 'axios';
+
 import 'core-js/stable/atob';
 import { jwtDecode } from 'jwt-decode';
 import moment from 'moment';
 import React, { useContext, useEffect, useState } from 'react';
 import {
   ImageBackground,
+  Modal,
   Pressable,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   View
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { AuthContext } from '../AuthContext';
+import { API_URL } from '../constants/config';
 import { RootStackParamList } from '../navigation/StackNavigator';
 
 /* ----------------------------------
@@ -60,6 +62,8 @@ const HomeScreen: React.FC = () => {
   const [trips, setTrips] = useState<Trip[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [user, setUser] = useState<User | null>(null);
+  const [deleteModalVisible, setDeleteModalVisible] = useState<boolean>(false);
+  const [selectedTripId, setSelectedTripId] = useState<string | null>(null);
   const isFocused = useIsFocused();
 
   const { userId, setUserId, setToken } = useContext(AuthContext);
@@ -82,11 +86,11 @@ const HomeScreen: React.FC = () => {
      Fetch User Data
   ----------------------------------- */
   useEffect(() => {
-    if (userId) {
+    if (userId && isFocused) {
       fetchUserData();
       fetchTrips();
     }
-  }, [userId]);
+  }, [userId, isFocused]);
 
   useEffect(() => {
     const checkLastCreated = async (): Promise<void> => {
@@ -106,18 +110,24 @@ const HomeScreen: React.FC = () => {
   }, [isFocused]);
 
   const fetchUserData = async (): Promise<void> => {
-    const response = await axios.get<User>(
-      `http://10.0.2.2:8000/user/${userId}`
-    );
-    setUser(response.data);
+    try {
+      const response = await fetch(
+        `${API_URL}/user/${userId}`
+      );
+      const data: User = await response.json();
+      setUser(data);
+    } catch (error) {
+      console.log('Error fetching user:', error);
+    }
   };
 
   const fetchTrips = async (): Promise<void> => {
     try {
-      const response = await axios.get<Trip[]>(
-        `http://10.0.2.2:8000/trips/${userId}`
+      const response = await fetch(
+        `${API_URL}/trips/${userId}`
       );
-      setTrips(response.data);
+      const data: Trip[] = await response.json();
+      setTrips(data);
     } catch (error) {
       console.error('Error fetching trips:', error);
     } finally {
@@ -141,15 +151,72 @@ const HomeScreen: React.FC = () => {
      UI
   ----------------------------------- */
 
+  const deleteTrip = async (id: string) => {
+    try {
+      const response = await fetch(`${API_URL}/trips/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setTrips((prevTrips) => prevTrips.filter((trip) => trip._id !== id));
+      } else {
+        console.error('Failed to delete trip');
+      }
+    } catch (error) {
+      console.error('Error deleting trip:', error);
+    }
+  };
+
+  const handleLongPress = (id: string) => {
+    setSelectedTripId(id);
+    setDeleteModalVisible(true);
+  };
+
+  const confirmDelete = () => {
+    if (selectedTripId) {
+      deleteTrip(selectedTripId);
+      setDeleteModalVisible(false);
+      setSelectedTripId(null);
+    }
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={deleteModalVisible}
+        onRequestClose={() => setDeleteModalVisible(false)}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Delete Trip</Text>
+            <Text style={styles.modalDescription}>
+              Are you sure you want to delete this trip?
+            </Text>
+            <View style={styles.modalButtons}>
+              <Pressable
+                style={[styles.button, styles.buttonCancel]}
+                onPress={() => setDeleteModalVisible(false)}>
+                <Text style={styles.textStyle}>Cancel</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonDelete]}
+                onPress={confirmDelete}>
+                <Text style={styles.textStyle}>Delete</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
       <ScrollView>
         {/* Header */}
         <View style={styles.header}>
           <Ionicons onPress={logout} name="person" size={30} color="orange" />
           <View style={styles.headerIcons}>
-            <AntDesign name="search1" size={30} color="orange" />
-            <AntDesign name="plus" size={30} color="orange" />
+            <AntDesign name="search" size={30} color="orange" />
+            <Pressable onPress={() => navigation.navigate('Create')}>
+              <AntDesign name="plus" size={30} color="orange" />
+            </Pressable>
           </View>
         </View>
 
@@ -165,6 +232,7 @@ const HomeScreen: React.FC = () => {
             <Pressable
               key={item._id}
               style={{ marginTop: 15 }}
+              onLongPress={() => handleLongPress(item._id)}
               onPress={() =>
                 navigation.navigate('Plan', { item, user })
               }>
@@ -275,5 +343,61 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: '600',
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    width: '80%',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  modalDescription: {
+    marginBottom: 20,
+    textAlign: 'center',
+    color: '#666',
+    fontSize: 16,
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    gap: 20,
+  },
+  button: {
+    borderRadius: 10,
+    padding: 10,
+    elevation: 2,
+    minWidth: 100,
+  },
+  buttonCancel: {
+    backgroundColor: 'gray',
+  },
+  buttonDelete: {
+    backgroundColor: 'red',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });

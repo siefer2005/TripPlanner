@@ -7,9 +7,11 @@ import {
 import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 
+import AiScreen from '../screens/AiScreen';
 import ChooseImage from '../screens/ChooseImage';
 import CreateTrip from '../screens/CreateTrip';
 import DefineActivity from '../screens/DefineActivity';
+import EmailAuthScreen from '../screens/EmailAuthScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import MapScreen from '../screens/MapScreen';
@@ -26,19 +28,16 @@ import { AuthContext } from '../AuthContext';
 export type RootStackParamList = {
   Login: undefined;
   Register: undefined;
+  EmailAuth: { isSignUp?: boolean } | undefined;
   Home: undefined;
-  Plan: { item: any; user?: any } | undefined;
+  Plan: { item: any; user: any };
   Create: { image?: string } | undefined;
   Choose: undefined;
-  Trip: { item: any } | undefined;
-  Activity: undefined;
-  Define: {
-    name: string;
-    itinerary: any[];
-    onGoBack?: () => void;
-  };
-  Map: { places: any[] };
-  Ai: undefined;
+  Trip: { item: any };
+  Activity: { name: string; tripId: string };
+  Define: undefined;
+  Map: undefined;
+  Ai: { name: string } | undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -72,6 +71,7 @@ const StackNavigator: React.FC = () => {
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
+      <Stack.Screen name="EmailAuth" component={EmailAuthScreen} />
     </Stack.Navigator>
   );
 
@@ -88,7 +88,7 @@ const StackNavigator: React.FC = () => {
       <Stack.Screen name="Activity" component={NewActivity} />
       <Stack.Screen name="Define" component={DefineActivity} />
       <Stack.Screen name="Map" component={MapScreen} />
-      {/* Ai assistant removed (component not present) */}
+      <Stack.Screen name="Ai" component={AiScreen} />
     </Stack.Navigator>
   );
 

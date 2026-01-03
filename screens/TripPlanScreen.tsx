@@ -1,11 +1,12 @@
 import { RouteProp, useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
-import axios from 'axios';
+
 import moment from 'moment';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
+  Alert,
   Image,
+  Linking,
   Pressable,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -14,6 +15,7 @@ import {
 } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import Modal, { BottomModal, ModalContent, ModalTitle, SlideAnimation } from 'react-native-modals';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
@@ -21,6 +23,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Place from '../components/Place';
+import { API_URL } from '../constants/config';
 
 type RootStackParamList = {
   TripPlan: { item: any; user: any }; // Using any for now to match loose typing from JS, ideally ITrip
@@ -95,17 +98,54 @@ const TripPlanScreen = () => {
     setIsValidEmail(validateEmail(input));
   };
 
+  const openPlacesInMap = () => {
+    const validPlaces = places.filter(
+      (place) =>
+        place.geometry &&
+        place.geometry.location &&
+        place.geometry.location.lat &&
+        place.geometry.location.lng
+    );
+
+    if (validPlaces.length === 0) {
+      Alert.alert('No places found', 'Add places to your itinerary to view them on the map.');
+      return;
+    }
+
+    const destination = validPlaces[validPlaces.length - 1];
+    const destLat = destination.geometry.location.lat;
+    const destLng = destination.geometry.location.lng;
+    const destinationQuery = `${destLat},${destLng}`;
+
+    const waypoints = validPlaces.slice(0, validPlaces.length - 1);
+    const waypointsQuery = waypoints
+      .map((p) => `${p.geometry.location.lat},${p.geometry.location.lng}`)
+      .join('|');
+
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${destinationQuery}&waypoints=${waypointsQuery}`;
+
+    Linking.openURL(url).catch((err) =>
+      console.error('An error occurred', err)
+    );
+  };
+
   const handleSendInvite = async () => {
     if (isValidEmail) {
       try {
-        const response = await axios.post(
-          'http://10.0.2.2:8000/sendInviteEmail',
+        const response = await fetch(
+          `${API_URL}/sendInviteEmail`,
           {
-            email,
-            tripId,
-            tripName,
-            senderName,
-          },
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email,
+              tripId,
+              tripName,
+              senderName,
+            }),
+          }
         );
 
         if (response.status === 200) {
@@ -134,18 +174,24 @@ const TripPlanScreen = () => {
   }, []);
 
   const fetchPlaceDetails = async (placeId: string) => {
-    const API_KEY = 'AIzaSyCOZJadVuwlJvZjl_jWMjEvJDbbc17fQQI';
+    const API_KEY = 'AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs';
     const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${API_KEY}`;
 
     try {
-      const response = await axios.get(url);
-      const details = response.data.result;
+      const response = await fetch(url);
+      const data: any = await response.json();
+      const details = data.result;
 
-      const openingHours = details.opening_hours?.weekday_text;
-      const phoneNumber = details.formatted_phone_number;
-      const website = details.website;
-      const reviews = details.reviews;
-      const photos = details.photos;
+      if (!details) {
+        console.log('No details found for placeId:', placeId);
+        return;
+      }
+
+      const openingHours = details.opening_hours?.weekday_text || [];
+      const phoneNumber = details.formatted_phone_number || '';
+      const website = details.website || '';
+      const reviews = details.reviews || [];
+      const photos = details.photos || [];
 
       const geometry = details?.geometry;
 
@@ -156,14 +202,21 @@ const TripPlanScreen = () => {
       setPhotos(photos);
 
       try {
-        const response = await axios.post(
-          `http://10.0.2.2:8000/trip/${tripId}/addPlace`,
+        const response = await fetch(
+          `${API_URL}/trip/${tripId}/addPlace`,
           {
-            placeId: placeId,
-          },
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              placeId: placeId,
+            }),
+          }
         );
+        const data: any = await response.json();
 
-        console.log('Updated Trip:', response.data);
+        console.log('Updated Trip:', data);
 
         if (response.status == 200) {
           setModalVisible(false);
@@ -178,10 +231,10 @@ const TripPlanScreen = () => {
 
   const fetchPlacesToVisit = async () => {
     try {
-      const response = await axios.get(
-        `http://10.0.2.2:8000/trip/${tripId}/placesToVisit`,
+      const response = await fetch(
+        `${API_URL}/trip/${tripId}/placesToVisit`,
       );
-      const placesToVisit = response.data;
+      const placesToVisit = await response.json();
       setPlaces(placesToVisit);
     } catch (error) {
       console.error('Error fetching places to visit:', error);
@@ -202,31 +255,37 @@ const TripPlanScreen = () => {
   useEffect(() => {
     const fetchRecommendedPlaces = async () => {
       try {
-        const response = await axios.get(
-          `https://maps.googleapis.com/maps/api/place/nearbysearch/json`,
-          {
-            params: {
-              location: '12.2958,76.6394', // Mysore
-              radius: 5000,
-              type: 'tourist_attraction',
-              key: 'AIzaSyCOZJadVuwlJvZjl_jWMjEvJDbbc17fQQI',
-            },
-          },
+        const queryParams = new URLSearchParams({
+          query: `tourist attractions in ${tripName}`,
+          key: 'AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs',
+        }).toString();
+
+        const response = await fetch(
+          `https://maps.googleapis.com/maps/api/place/textsearch/json?${queryParams}`
         );
-        setRecommendedPlaces(response.data.results.slice(0, 10));
+        const data: any = await response.json();
+        if (data.status === 'OK') {
+          setRecommendedPlaces(data.results.slice(0, 10));
+        } else {
+          console.error('Text Search API Error:', data.status, data.error_message);
+        }
       } catch (error) {
         console.error('Error fetching recommended places:', error);
       }
     };
-    fetchRecommendedPlaces();
+
+    if (tripName) {
+      fetchRecommendedPlaces();
+    }
   }, []);
 
   const fetchDetails = async (placeId: string) => {
-    const API_KEY = 'AIzaSyCOZJadVuwlJvZjl_jWMjEvJDbbc17fQQI';
+    const API_KEY = 'AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs';
     const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${API_KEY}`;
     try {
-      const response = await axios.get(url);
-      const details = response.data.result;
+      const response = await fetch(url);
+      const data: any = await response.json();
+      const details = data.result;
       return details;
     } catch (error) {
       console.error('Error fetching place details:', error);
@@ -250,10 +309,10 @@ const TripPlanScreen = () => {
 
   const fetchItinerary = async () => {
     try {
-      const response = await axios.get(
-        `http://10.0.2.2:8000/trip/${tripId}/itinerary`,
+      const response = await fetch(
+        `${API_URL}/trip/${tripId}/itinerary`,
       );
-      const itinerary = response.data;
+      const itinerary = await response.json();
       setItinerary(itinerary);
     } catch (error) {
       console.error('Error fetching itinerary:', error);
@@ -298,9 +357,15 @@ const TripPlanScreen = () => {
     };
 
     try {
-      const response = await axios.post(
-        `http://10.0.2.2:8000/trips/${tripId}/itinerary/${selectedDate}`,
-        newActivity,
+      const response = await fetch(
+        `${API_URL}/trips/${tripId}/itinerary/${selectedDate}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newActivity),
+        }
       );
       console.log('Activity added successfully');
       setModalVisible(false);
@@ -342,12 +407,19 @@ const TripPlanScreen = () => {
 
   const setTripBudget = async (budget: string | number) => {
     try {
-      const response = await axios.put(
-        `http://10.0.2.2:8000/setBudget/${tripId}`,
-        { budget },
+      const response = await fetch(
+        `${API_URL}/setBudget/${tripId}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ budget }),
+        }
       );
+      const data: any = await response.json();
       setModalOpen(false);
-      console.log('Budget updated successfully:', response.data);
+      console.log('Budget updated successfully:', data);
     } catch (error) {
       console.error('Error setting budget:', error);
     }
@@ -361,9 +433,15 @@ const TripPlanScreen = () => {
         splitBy: value,
         paidBy: paidBy,
       };
-      const response = await axios.post(
-        `http://10.0.2.2:8000/addExpense/${tripId}`,
-        expenseData,
+      const response = await fetch(
+        `${API_URL}/addExpense/${tripId}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(expenseData),
+        }
       );
 
       if (response.status === 200) {
@@ -378,11 +456,12 @@ const TripPlanScreen = () => {
 
   const fetchExpenses = async () => {
     try {
-      const response = await axios.get(
-        `http://10.0.2.2:8000/getExpenses/${tripId}`,
+      const response = await fetch(
+        `${API_URL}/getExpenses/${tripId}`,
       );
       if (response.status === 200) {
-        setExpenses(response.data.expenses);
+        const data: any = await response.json();
+        setExpenses(data.expenses);
       }
     } catch (error) {
       console.error('Error fetching expenses:', error);
@@ -392,6 +471,28 @@ const TripPlanScreen = () => {
   useEffect(() => {
     fetchExpenses();
   }, [modal]);
+
+  const handleRemovePlace = async (place: any) => {
+    try {
+      const response = await fetch(`${API_URL}/trip/${tripId}/place`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ placeName: place.name }),
+      });
+
+      if (response.status === 200) {
+        console.log('Place removed successfully');
+        // Refresh list
+        fetchPlacesToVisit();
+      } else {
+        console.error('Failed to remove place');
+      }
+    } catch (error) {
+      console.error('Error removing place:', error);
+    }
+  };
 
   return (
     <>
@@ -638,6 +739,7 @@ const TripPlanScreen = () => {
                             item={item}
                             items={items}
                             setItems={setItems as any}
+                            onRemove={handleRemovePlace}
                           />
                         ))}
                     </View>
@@ -687,7 +789,12 @@ const TripPlanScreen = () => {
                         />
                       </View>
 
-                      <View
+                      <Pressable
+                        onPress={() => {
+                          const query = encodeURIComponent(tripName || '');
+                          const url = `https://www.google.com/maps/dir/?api=1&destination=${query}`;
+                          Linking.openURL(url);
+                        }}
                         style={{
                           width: 44,
                           height: 44,
@@ -701,7 +808,7 @@ const TripPlanScreen = () => {
                           size={22}
                           color="black"
                         />
-                      </View>
+                      </Pressable>
                     </View>
                     <Text
                       style={{
@@ -720,11 +827,15 @@ const TripPlanScreen = () => {
                           {placeDetails?.map((item, index) => {
                             const firstPhoto = item?.photos?.[0];
                             const imageUrl = firstPhoto
-                              ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${firstPhoto.photo_reference}&key=AIzaSyCOZJadVuwlJvZjl_jWMjEvJDbbc17fQQI`
+                              ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${firstPhoto.photo_reference}&key=AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs`
                               : null;
 
                             return (
                               <Pressable
+                                onPress={async () => {
+                                  await fetchPlaceDetails(item.place_id);
+                                  await fetchPlacesToVisit();
+                                }}
                                 style={{
                                   flexDirection: 'row',
                                   alignItems: 'center',
@@ -771,6 +882,7 @@ const TripPlanScreen = () => {
                           })}
                         </ScrollView>
                       )}
+
                     </View>
                   </View>
 
@@ -917,7 +1029,7 @@ const TripPlanScreen = () => {
                           marginBottom: 7,
                           backgroundColor: 'white',
                           marginVertical: 10,
-                          
+
                         }}>
                         <View
                           style={{
@@ -1064,7 +1176,12 @@ const TripPlanScreen = () => {
                             />
                           </View>
 
-                          <View
+                          <Pressable
+                            onPress={() => {
+                              const query = encodeURIComponent(tripName || '');
+                              const url = `https://www.google.com/maps/dir/?api=1&destination=${query}`;
+                              Linking.openURL(url);
+                            }}
                             style={{
                               width: 44,
                               height: 44,
@@ -1078,7 +1195,7 @@ const TripPlanScreen = () => {
                               size={22}
                               color="black"
                             />
-                          </View>
+                          </Pressable>
                         </View>
                       </View>
                     ))}
@@ -1360,7 +1477,7 @@ const TripPlanScreen = () => {
           </View>
 
           <BottomModal
-            onBackdropPress={() => setModalVisible(!modalVisible)}
+
             swipeDirection={['up', 'down']}
             swipeThreshold={200}
             modalAnimation={
@@ -1409,7 +1526,7 @@ const TripPlanScreen = () => {
                       }
                     }}
                     query={{
-                      key: 'AIzaSyCOZJadVuwlJvZjl_jWMjEvJDbbc17fQQI',
+                      key: 'AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs',
                       language: 'en',
                     }}
                   />
@@ -1489,7 +1606,7 @@ const TripPlanScreen = () => {
           </BottomModal>
 
           <BottomModal
-            onBackdropPress={() => setModal(!modal)}
+
             swipeDirection={['up', 'down']}
             swipeThreshold={200}
             modalAnimation={
@@ -1732,7 +1849,7 @@ const TripPlanScreen = () => {
       </SafeAreaView>
 
       <Modal
-        onBackdropPress={() => setModalOpen(!modalOpen)}
+        onTouchOutside={() => setModalOpen(!modalOpen)}
         onHardwareBackPress={() => { setModalOpen(!modalOpen); return true; }}
         swipeDirection={['up', 'down']}
         swipeThreshold={200}
@@ -1742,8 +1859,7 @@ const TripPlanScreen = () => {
             slideFrom: 'bottom',
           })
         }
-        visible={modalOpen}
-        onTouchOutside={() => setModalOpen(!modalOpen)}>
+        visible={modalOpen}>
         <ModalContent style={{ width: 350, height: 'auto' }}>
           <View style={{}}>
             <View
@@ -1818,7 +1934,7 @@ const TripPlanScreen = () => {
       </Modal>
 
       <BottomModal
-        onBackdropPress={() => setOpenShareModal(!openShareModal)}
+
         swipeDirection={['up', 'down']}
         swipeThreshold={200}
         modalAnimation={
@@ -1958,6 +2074,7 @@ const TripPlanScreen = () => {
         onPress={() =>
           navigation.navigate('Ai', {
             name: route?.params?.item?.tripName,
+            tripId: route?.params?.item?._id,
           })
         }
         style={{
@@ -1981,11 +2098,7 @@ const TripPlanScreen = () => {
       </Pressable>
 
       <Pressable
-        onPress={() =>
-          navigation.navigate('Map', {
-            places: places,
-          })
-        }
+        onPress={openPlacesInMap}
         style={{
           width: 60,
           height: 60,

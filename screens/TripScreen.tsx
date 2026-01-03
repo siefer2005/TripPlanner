@@ -9,12 +9,12 @@ import {
   Image,
   ImageBackground,
   Pressable,
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { BottomModal, ModalContent, SlideAnimation } from 'react-native-modals';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 /* ----------------------------------
@@ -79,7 +79,9 @@ const TripScreen: React.FC = () => {
               alignItems: 'center',
               justifyContent: 'space-between',
             }}>
-            <AntDesign name="downcircle" size={25} color="white" />
+            <Pressable onPress={() => navigation.goBack()}>
+              <AntDesign name="arrow-left" size={25} color="white" />
+            </Pressable>
             <View style={{ flexDirection: 'row', gap: 10 }}>
               <AntDesign name="share-alt" size={25} color="white" />
               <AntDesign name="setting" size={25} color="white" />
@@ -137,9 +139,9 @@ const TripScreen: React.FC = () => {
                 key={item.id}
                 onPress={() => {
                   setModalVisible(false);
-                  navigation.navigate('Define', {
+                  navigation.navigate('Activity', {
                     name: item.name,
-                    itinerary: itinerary,
+                    tripId: route?.params?.item?._id,
                   });
                 }}
                 style={{
@@ -161,6 +163,20 @@ const TripScreen: React.FC = () => {
               </Pressable>
             ))}
           </View>
+          <Pressable
+            onPress={() => {
+              setModalVisible(false);
+              navigation.navigate('Home');
+            }}
+            style={{
+              marginTop: 20,
+              padding: 10,
+              backgroundColor: '#007AFF',
+              borderRadius: 6,
+              alignItems: 'center',
+            }}>
+            <Text style={{ color: 'white', fontWeight: 'bold' }}>Done / Home</Text>
+          </Pressable>
         </ModalContent>
       </BottomModal>
     </>

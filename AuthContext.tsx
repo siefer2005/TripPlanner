@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 import React, {
-    createContext,
-    ReactNode,
-    useEffect,
-    useState,
+  createContext,
+  ReactNode,
+  useEffect,
+  useState,
 } from 'react';
 
 /* ----------------------------------
@@ -70,7 +70,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       if (!storedToken) return;
 
       try {
-        const decoded = (jwtDecode as any)<DecodedToken>(storedToken);
+        const decoded = jwtDecode<DecodedToken>(storedToken);
         setUserId(decoded.userId);
       } catch (error) {
         console.error('Invalid token:', error);

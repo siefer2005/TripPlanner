@@ -1,11 +1,10 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
-import axios from 'axios';
+
 import moment from 'moment';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Image,
   Pressable,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -14,6 +13,7 @@ import {
 } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { BottomModal, ModalContent, SlideAnimation } from 'react-native-modals';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -81,12 +81,13 @@ const DefineActivity: React.FC = () => {
 
 
   const fetchPlaceDetails = async (placeId: string): Promise<void> => {
-    const API_KEY = 'AIzaSyCOZJadVuwlJvZjl_jWMjEvJDbbc17fQQI';
+    const API_KEY = 'AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs';
     const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${API_KEY}`;
 
     try {
-      const response = await axios.get(url);
-      const details: PlaceDetails = response.data.result;
+      const response = await fetch(url);
+      const data: any = await response.json();
+      const details: PlaceDetails = data.result;
 
       setOpeningHours(details.opening_hours?.weekday_text || []);
       setNumber(details.formatted_phone_number || '');
@@ -169,7 +170,7 @@ const DefineActivity: React.FC = () => {
           </Text>
 
           <View style={{ padding: 10, flexDirection: 'row', gap: 10 }}>
-            <AntDesign name="search1" size={23} color="pink" />
+            <AntDesign name="search" size={23} color="pink" />
 
             <View style={{ flex: 1 }}>
               <TextInput
@@ -191,7 +192,7 @@ const DefineActivity: React.FC = () => {
                   }
                 }}
                 query={{
-                  key: 'AIzaSyCOZJadVuwlJvZjl_jWMjEvJDbbc17fQQI',
+                  key: 'AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs',
                   language: 'en',
                 }}
               />
@@ -219,7 +220,7 @@ const DefineActivity: React.FC = () => {
           {photos.length > 0 && (
             <PhotoGallery
               photos={photos}
-              apiKey="AIzaSyCOZJadVuwlJvZjl_jWMjEvJDbbc17fQQI"
+              apiKey="AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs"
             />
           )}
         </ScrollView>
@@ -228,7 +229,7 @@ const DefineActivity: React.FC = () => {
       {/* Bottom Modal */}
       <BottomModal
         visible={modalVisible}
-        onBackdropPress={() => setModalVisible(false)}
+        onTouchOutside={() => setModalVisible(false)}
         modalAnimation={new SlideAnimation({ slideFrom: 'bottom' })}>
         <ModalContent style={{ height: 700 }}>
           {route.params?.itinerary?.map((item, index) => (

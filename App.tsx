@@ -1,23 +1,34 @@
 import React from 'react';
+import { BackHandler } from 'react-native';
 import { ModalPortal } from 'react-native-modals';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { View, Text, StyleSheet, BackHandler } from 'react-native';
+
 import { AuthProvider } from './AuthContext';
 import StackNavigator from './navigation/StackNavigator';
 
-if (!BackHandler.removeEventListener) {
+// Polyfill for deprecated BackHandler.removeEventListener (fixes react-native-modals crash)
+if (typeof (BackHandler as any).removeEventListener !== 'function') {
+  const handlers = new Map();
   const originalAdd = BackHandler.addEventListener;
-  const subMap = new Map();
-  BackHandler.addEventListener = (eventName: any, handler: any) => {
-    const sub = originalAdd(eventName, handler);
-    if (handler) subMap.set(handler, sub);
-    return sub;
+
+  // @ts-ignore
+  BackHandler.addEventListener = (eventName: string, handler: any) => {
+    const subscription = originalAdd(eventName as "hardwareBackPress", handler);
+    if (!handlers.has(eventName)) {
+      handlers.set(eventName, new Map());
+    }
+    handlers.get(eventName).set(handler, subscription);
+    return subscription;
   };
-  BackHandler.removeEventListener = (eventName: any, handler: any) => {
-    const sub = subMap.get(handler);
-    if (sub) {
-      sub.remove();
-      subMap.delete(handler);
+
+  // @ts-ignore
+  BackHandler.removeEventListener = (eventName: string, handler: any) => {
+    if (handlers.has(eventName)) {
+      const subscription = handlers.get(eventName).get(handler);
+      if (subscription) {
+        subscription.remove();
+        handlers.get(eventName).delete(handler);
+      }
     }
   };
 }

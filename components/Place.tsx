@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
 import React from 'react';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -22,11 +22,12 @@ interface PlaceProps {
   items: string[];
   setItems: React.Dispatch<React.SetStateAction<string[]>>;
   index: number;
+  onRemove?: (place: PlaceItem) => void;
 }
 
 /* ---------- Component ---------- */
 
-const Place: React.FC<PlaceProps> = ({ item, items, setItems, index }) => {
+const Place: React.FC<PlaceProps> = ({ item, items, setItems, index, onRemove }) => {
   const choosePlaces = (name: string) => {
     setItems(prevItems =>
       prevItems.includes(name)
@@ -135,6 +136,28 @@ const Place: React.FC<PlaceProps> = ({ item, items, setItems, index }) => {
                 </View>
               ))}
             </View>
+          )}
+
+          {onRemove && (
+            <Pressable
+              onPress={() => onRemove(item)}
+              style={{
+                marginTop: 15,
+                marginHorizontal: 8,
+                backgroundColor: '#FFE5E5',
+                padding: 10,
+                borderRadius: 8,
+                alignItems: 'center',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                gap: 5,
+              }}
+            >
+              <AntDesign name="delete" size={20} color="#FF4444" />
+              <Text style={{ color: '#FF4444', fontWeight: 'bold' }}>
+                Remove Place
+              </Text>
+            </Pressable>
           )}
         </View>
       )}

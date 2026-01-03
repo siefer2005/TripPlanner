@@ -1,101 +1,119 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { GoogleSignin, User } from '@react-native-google-signin/google-signin';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import axios from 'axios';
+import {
+  GoogleSignin,
+  User,
+  isSuccessResponse,
+} from '@react-native-google-signin/google-signin';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useContext, useState } from 'react';
 import {
   Image,
-  Platform,
   Pressable,
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
 import { AuthContext } from '../AuthContext';
+import { API_URL, GOOGLE_WEB_CLIENT_ID } from '../constants/config';
 import { RootStackParamList } from '../navigation/StackNavigator';
-
-/* ----------------------------------
-   Google Sign-In Config
------------------------------------ */
-GoogleSignin.configure({
-  webClientId:
-    '903206219784-bcvavuo2gorcaq7sae15127588fr9b9d.apps.googleusercontent.com',
-  // iosClientId:
-  //   '903206219784-jtvnboqi1us7u6v42ljtfsbjc0c72ibh.apps.googleusercontent.com',
-  scopes: ['profile', 'email'],
-});
 
 /* ----------------------------------
    Types
 ----------------------------------- */
+interface BackendLoginResponse {
+  token: string;
+}
 
 type GoogleLoginResponse = User & {
-  idToken: string | null;
+  idToken?: string | null;
   data?: {
     idToken?: string | null;
   };
 };
 
-interface BackendLoginResponse {
-  token: string;
-}
-
 /* ----------------------------------
    Component
 ----------------------------------- */
-
 const LoginScreen: React.FC = () => {
-  const { token, setToken } = useContext(AuthContext);
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const { setToken } = useContext(AuthContext);
 
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
   /* ----------------------------------
-     Google Login
+     Google Sign-In Configuration
   ----------------------------------- */
-  const GoogleLogin = async (): Promise<GoogleLoginResponse> => {
-    await GoogleSignin.hasPlayServices();
-    const userInfo = (await GoogleSignin.signIn()) as unknown;
+  React.useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: GOOGLE_WEB_CLIENT_ID,
+      scopes: ['profile', 'email'],
+    });
+  }, []);
 
-    // Guard against cancelled response shape
-    if ((userInfo as { type?: string })?.type === 'cancel') {
-      throw new Error('Google sign-in cancelled');
+  /* ----------------------------------
+     Google Login Helper
+  ----------------------------------- */
+  const googleLogin = async (): Promise<GoogleLoginResponse> => {
+    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+    const signInResponse = await GoogleSignin.signIn();
+
+    // Check if the user cancelled the sign-in
+    if (!isSuccessResponse(signInResponse)) {
+      throw new Error('Google sign-in was cancelled');
     }
 
-    const user = userInfo as User;
-
-    return {
-      ...user,
-      idToken: user.idToken ?? null,
-    };
+    return signInResponse.data as GoogleLoginResponse;
   };
 
+  /* ----------------------------------
+     Google Login Handler
+  ----------------------------------- */
   const handleGoogleLogin = async (): Promise<void> => {
     setLoading(true);
+    setError('');
+
     try {
-      const response = await GoogleLogin();
+      const response = await googleLogin();
 
       const extractedIdToken =
         response.idToken || response.data?.idToken;
 
       if (!extractedIdToken) {
-        throw new Error('ID Token not found');
+        throw new Error('Google ID Token not found');
       }
 
-      const apiBase =
-        Platform.OS === 'android' ? 'http://10.0.2.2:8000' : 'http://localhost:8000';
+      const backendResponse = await fetch(`${API_URL}/google-login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          idToken: extractedIdToken,
+        }),
+      }).catch((fetchError) => {
+        console.error('Fetch error:', fetchError);
+        throw new Error('Cannot connect to server. Please check if the backend is running.');
+      });
 
-      const backendResponse = await axios.post<BackendLoginResponse>(
-        `${apiBase}/google-login`,
-        { idToken: extractedIdToken }
-      );
+      console.log('Response status:', backendResponse.status);
 
-      const { token } = backendResponse.data;
+      if (!backendResponse.ok) {
+        try {
+          const errorData = await backendResponse.json();
+          throw new Error(errorData.message || `HTTP error! status: ${backendResponse.status}`);
+        } catch (jsonError) {
+          throw new Error(`Server error: ${backendResponse.status} ${backendResponse.statusText}`);
+        }
+      }
 
+      const data: BackendLoginResponse = await backendResponse.json();
+      const { token } = data;
+
+      console.log('Login successful, saving token');
       await AsyncStorage.setItem('authToken', token);
       setToken(token);
     } catch (err: unknown) {
@@ -106,17 +124,9 @@ const LoginScreen: React.FC = () => {
     }
   };
 
-  const handleDirectHome = async (): Promise<void> => {
-    // Persist a dummy auth token so the main stack renders
-    await AsyncStorage.setItem('authToken', 'guest');
-    setToken('guest');
-    navigation.navigate('Home');
-  };
-
   /* ----------------------------------
      UI
   ----------------------------------- */
-
   return (
     <SafeAreaView>
       <View style={{ marginTop: 30, alignItems: 'center' }}>
@@ -127,46 +137,60 @@ const LoginScreen: React.FC = () => {
       </View>
 
       <View style={{ marginTop: 70 }}>
-        {/* Facebook */}
-        <View style={styles.authButton}>
+        {/* Facebook Button */}
+        <View style={styles.socialButton}>
           <AntDesign
-            style={styles.iconLeft}
+            style={styles.leftIcon}
             name="facebook"
             size={24}
             color="blue"
           />
-          <Text style={styles.authText}>Sign Up With Facebook</Text>
+          <Text style={styles.socialText}>Sign Up With Facebook</Text>
         </View>
 
-        {/* Google */}
-        <Pressable onPress={handleGoogleLogin} style={styles.authButton}>
+        {/* Google Button */}
+        <Pressable
+          onPress={handleGoogleLogin}
+          disabled={loading}
+          style={styles.socialButton}>
           <AntDesign
-            style={styles.iconLeft}
+            style={styles.leftIcon}
             name="google"
             size={24}
             color="red"
           />
-          <Text style={styles.authText}>Sign Up With Google</Text>
+          <Text style={styles.socialText}>
+            {loading ? 'Signing In...' : 'Sign Up With Google'}
+          </Text>
         </Pressable>
 
-        {/* Email */}
-        <View style={styles.authButton}>
+        {/* Email Button */}
+        <Pressable
+          onPress={() => navigation.navigate('EmailAuth')}
+          style={styles.socialButton}>
           <AntDesign
-            style={styles.iconLeft}
+            style={styles.leftIcon}
             name="mail"
             size={24}
             color="black"
           />
-          <Text style={styles.authText}>Sign Up With Email</Text>
-        </View>
+          <Text style={styles.socialText}>Sign Up With Email</Text>
+        </Pressable>
 
-        <Pressable style={{ marginTop: 12 }}>
-          <Text style={styles.signInText}>
+        {/* Error Message */}
+        {error ? (
+          <Text style={{ color: 'red', textAlign: 'center', marginTop: 10 }}>
+            {error}
+          </Text>
+        ) : null}
+
+        {/* Sign In */}
+        <Pressable
+          onPress={() => navigation.navigate('EmailAuth', { isSignUp: false })}
+          style={{ marginTop: 12 }}>
+          <Text style={{ textAlign: 'center', fontSize: 15, color: 'gray' }}>
             Already have an account? Sign In
           </Text>
-        </Pressable>
-        <Pressable style={{ marginTop: 12 }} onPress={handleDirectHome}>
-          <Text style={styles.signInText}>Continue to Home</Text>
         </Pressable>
       </View>
     </SafeAreaView>
@@ -178,9 +202,8 @@ export default LoginScreen;
 /* ----------------------------------
    Styles
 ----------------------------------- */
-
 const styles = StyleSheet.create({
-  authButton: {
+  socialButton: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
@@ -192,18 +215,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
     position: 'relative',
   },
-  iconLeft: {
+  leftIcon: {
     position: 'absolute',
     left: 10,
   },
-  authText: {
+  socialText: {
     textAlign: 'center',
     fontSize: 15,
     fontWeight: '500',
-  },
-  signInText: {
-    textAlign: 'center',
-    fontSize: 15,
-    color: 'gray',
   },
 });

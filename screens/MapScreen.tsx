@@ -2,12 +2,12 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Image,
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import MapView, { LatLng, Marker } from 'react-native-maps';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 /* ----------------------------------
