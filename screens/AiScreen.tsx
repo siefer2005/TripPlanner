@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Voice from '@react-native-voice/voice';
+import Voice, { SpeechResultsEvent } from '@react-native-voice/voice';
 
 // Mock Voice removed. Ensure package is installed.
 
@@ -12,6 +12,7 @@ import {
     ImageBackground,
     KeyboardAvoidingView,
     Linking,
+    PermissionsAndroid,
     Platform,
     Pressable,
     StyleSheet,
