@@ -96,7 +96,7 @@ const LoginScreen: React.FC = () => {
         }),
       }).catch((fetchError) => {
         console.error('Fetch error:', fetchError);
-        throw new Error('Cannot connect to server. Please check if the backend is running.');
+        throw new Error('Cannot connect to server. Please check if the backend is running and you are on the same Wi-Fi.');
       });
 
       console.log('Response status:', backendResponse.status);
@@ -223,5 +223,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 15,
     fontWeight: '500',
+    color: 'black',
   },
 });

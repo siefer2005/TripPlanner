@@ -68,7 +68,7 @@ const Place: React.FC<PlaceProps> = ({ item, items, setItems, index, onRemove })
 
             <Text
               numberOfLines={2}
-              style={{ fontSize: 16, fontWeight: '500', width: '82%' }}
+              style={{ fontSize: 16, fontWeight: '500', width: '82%', color: '#202020' }}
             >
               {item.name}
             </Text>

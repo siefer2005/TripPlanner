@@ -6,6 +6,11 @@
         "rootDir": "./",
         "strict": true,
         "esModuleInterop": true,
-        "skipLibCheck": true
-    }
+        "skipLibCheck": true,
+        "types": []
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
 }

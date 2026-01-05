@@ -10,8 +10,8 @@ import {
     Alert,
     FlatList,
     Image,
-    ImageBackground,
     KeyboardAvoidingView,
+
     Linking,
     PermissionsAndroid,
     Platform,
@@ -22,7 +22,9 @@ import {
     View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Tts from 'react-native-tts';
 
+import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { generateSystemPrompt, sendChatRequest } from '../api/aiService';
 import { AuthContext } from '../AuthContext';
@@ -39,9 +41,10 @@ type AiParams = {
 
 type Message = {
     id: string;
-    role: 'user' | 'assistant';
+    role: 'user' | 'assistant' | 'system' | 'prompt';
     content: string;
     timestamp: number;
+    imageUrl?: string;
 };
 
 const AiScreen: React.FC = () => {
@@ -59,7 +62,10 @@ const AiScreen: React.FC = () => {
     const [tripDetails, setTripDetails] = useState<any>(null);
     const [userDetails, setUserDetails] = useState<any>(null);
     const [menuVisible, setMenuVisible] = useState(false);
+    const [isSpeaking, setIsSpeaking] = useState(false);
+    const [currentSpeech, setCurrentSpeech] = useState('');
     const flatListRef = useRef<FlatList>(null);
+
 
     useEffect(() => {
         if (tripId) {
@@ -99,10 +105,27 @@ const AiScreen: React.FC = () => {
     useEffect(() => {
         loadHistory();
         setupVoice();
+
+        const onFinish = () => {
+            setIsSpeaking(false);
+            setCurrentSpeech('');
+        };
+        const onCancel = () => setIsSpeaking(false);
+        const onStart = () => setIsSpeaking(true);
+
+        const startListener = Tts.addListener('tts-start', onStart);
+        const finishListener = Tts.addListener('tts-finish', onFinish);
+        const cancelListener = Tts.addListener('tts-cancel', onCancel);
+
         return () => {
             Voice.destroy().then(Voice.removeAllListeners);
+            Tts.stop();
+            startListener.remove();
+            finishListener.remove();
+            cancelListener.remove();
         };
     }, []);
+
 
     const setupVoice = async () => {
         try {
@@ -217,7 +240,7 @@ const AiScreen: React.FC = () => {
                             setMessages([]);
                             const initialMsg: Message = {
                                 id: Date.now().toString(),
-                                role: 'assistant',
+                                role: 'system',
                                 content: `Hello ${userDetails?.name || ''}! Chat history cleared. How can I help you?`,
                                 timestamp: Date.now(),
                             };
@@ -242,11 +265,50 @@ const AiScreen: React.FC = () => {
 
                 const initialMsg: Message = {
                     id: Date.now().toString(),
-                    role: 'assistant',
-                    content: `Hello ${userDetails?.name || ''}! I'm your AI travel assistant for ${name || 'your trip'}. I have your itinerary and details ready. How can I help you?`,
+                    role: 'system',
+                    content: `Hello ${userDetails?.name || ''}!\n I'm your AI travel assistant for ${name || 'your trip'}.`,
                     timestamp: Date.now(),
                 };
-                setMessages([initialMsg]);
+
+                // Fetch place image if 'name' (destination) is available
+                let placeImageUrl = undefined;
+                if (name) {
+                    try {
+                        const GOOGLE_API_KEY = 'AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs';
+                        const placeRes = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${name}&inputtype=textquery&fields=photos&key=${GOOGLE_API_KEY}`);
+                        const placeData = await placeRes.json();
+                        if (placeData.candidates && placeData.candidates.length > 0 && placeData.candidates[0].photos) {
+                            const photoRef = placeData.candidates[0].photos[0].photo_reference;
+                            placeImageUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photoRef}&key=${GOOGLE_API_KEY}`;
+                        }
+                    } catch (err) {
+                        console.error("Failed to fetch place image for prompt", err);
+                    }
+                }
+
+                const promptMsg: Message = {
+                    id: (Date.now() + 1).toString(),
+                    role: 'prompt',
+                    content: `Place to visit in ${name || 'your destination'}`,
+                    timestamp: Date.now(),
+                    imageUrl: placeImageUrl,
+                };
+
+                const promptMsg2: Message = {
+                    id: (Date.now() + 2).toString(),
+                    role: 'prompt',
+                    content: `✈️ Plan itinerary to ${name || 'destination'}from my location`,
+                    timestamp: Date.now(),
+                };
+
+                const promptMsg3: Message = {
+                    id: (Date.now() + 3).toString(),
+                    role: 'prompt',
+                    content: `🏨 Give the List of top Hotels in ${name || 'destination'}`,
+                    timestamp: Date.now(),
+                };
+
+                setMessages([initialMsg, promptMsg, promptMsg2, promptMsg3]);
             }
         } catch (e) {
             console.log('Failed to load history', e);
@@ -261,19 +323,24 @@ const AiScreen: React.FC = () => {
         }
     };
 
-    const sendMessage = async () => {
-        if (!inputText.trim()) return;
+    const sendMessage = async (customText?: string) => {
+        const textToSend = typeof customText === 'string' ? customText : inputText;
+        if (!textToSend.trim()) return;
 
         const userMsg: Message = {
             id: Date.now().toString(),
             role: 'user',
-            content: inputText.trim(),
+            content: textToSend.trim(),
             timestamp: Date.now(),
         };
 
         const updatedMessages = [...messages, userMsg];
         setMessages(updatedMessages);
-        setInputText('');
+
+        if (typeof customText !== 'string') {
+            setInputText('');
+        }
+
         saveHistory(updatedMessages);
         setIsLoading(true);
 
@@ -304,10 +371,19 @@ const AiScreen: React.FC = () => {
                 setMessages(finalMessages);
                 saveHistory(finalMessages);
                 setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 100);
+
+                // Narrate the response
+                const speechText = aiContent.replace(/[*#]/g, ''); // Remove markdown symbols
+                setCurrentSpeech(speechText);
+                setIsSpeaking(true);
+                Tts.speak(speechText);
             } else {
-                console.error("OpenAI Error", data);
-                Alert.alert("AI Error", "Failed to get response from AI");
+
+                console.error("AI Error Detailed:", data);
+                const errorMsg = data.error?.message || "Failed to get response from AI";
+                Alert.alert("AI Error", errorMsg);
             }
+
 
         } catch (error) {
             console.error(error);
@@ -361,6 +437,69 @@ const AiScreen: React.FC = () => {
 
     const renderItem = ({ item }: { item: Message }) => {
         const isUser = item.role === 'user';
+        const isSystem = item.role === 'system';
+        const isPrompt = item.role === 'prompt';
+
+        if (isSystem) {
+            return (
+                <View style={{ alignSelf: 'center', marginVertical: 10, padding: 10 }}>
+                    <Text style={{ textAlign: 'center', color: '#000000ff', fontStyle: 'italic', fontSize: 18 }}>
+                        {item.content}
+                    </Text>
+                </View>
+            );
+        }
+
+        if (isPrompt) {
+            return (
+                <Pressable
+                    onPress={() => sendMessage(item.content)}
+                    style={{ alignSelf: 'center', marginVertical: 5, width: 250, height: 65 }}
+                >
+                    <LinearGradient
+                        colors={['#ADD8E6', '#0101dfff']}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 1 }}
+                        style={{
+                            flex: 1,
+                            padding: 3,
+                            borderRadius: 20,
+                            elevation: 3,
+                            shadowColor: '#000',
+                            shadowOffset: { width: 5, height: 5 },
+                            shadowOpacity: 0.25,
+                            shadowRadius: 3.84,
+                        }}
+                    >
+                        <View style={{
+                            flex: 1,
+                            backgroundColor: '#fff',
+                            borderRadius: 18,
+                            paddingHorizontal: 15,
+                            paddingVertical: 8,
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            gap: 10,
+                        }}>
+                            {item.imageUrl && (
+                                <Image
+                                    source={{ uri: item.imageUrl }}
+                                    style={{ width: 40, height: 40, borderRadius: 10 }}
+                                />
+                            )}
+                            <Text
+                                style={{ color: '#000000ff', fontWeight: '500', flex: 1 }}
+                                numberOfLines={2}
+                                ellipsizeMode='tail'
+                            >
+                                {item.content}
+                            </Text>
+                        </View>
+                    </LinearGradient>
+                </Pressable>
+            );
+        }
+
         return (
             <View style={[
                 styles.messageBubble,
@@ -372,22 +511,34 @@ const AiScreen: React.FC = () => {
     };
 
     return (
-        <ImageBackground
-            source={require('../assets/images/Robot.gif')}
+        <LinearGradient
+            colors={['#ffffffff', '#72b2f7ff']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
             style={styles.container}
-            resizeMode="contain"
         >
-            <SafeAreaView style={styles.safeArea}>
+            {/* Background GIF */}
+            {/* <View style={[StyleSheet.absoluteFill, { justifyContent: 'center', alignItems: 'center' }]}>
+                <View style={{ width: '100%', height: '40%', opacity: 0.6 }}>
+                    <Image
+                        source={require('../assets/images/TravelSelfie.gif')}
+                        style={{ width: '100%', height: '100%' }}
+                        resizeMode="contain"
+                    />
+                </View>
+            </View> */}
+
+            <SafeAreaView style={[styles.safeArea, { backgroundColor: 'transparent' }]}>
                 {/* Header */}
                 <View style={styles.header}>
-                    <Pressable onPress={() => navigation.goBack()}>
-                        <Ionicons name="arrow-back" size={24} color="black" />
+                    <Pressable onPress={() => navigation.goBack()} style={styles.headerIconContainer}>
+                        <Ionicons name="arrow-back" size={24} color="white" />
                     </Pressable>
                     <Text style={styles.headerTitle}>AI Assistant</Text>
 
                     <View>
-                        <Pressable onPress={() => setMenuVisible(!menuVisible)}>
-                            <Ionicons name="ellipsis-horizontal" size={24} color="black" />
+                        <Pressable onPress={() => setMenuVisible(!menuVisible)} style={styles.headerIconContainer}>
+                            <Ionicons name="ellipsis-horizontal" size={24} color="white" />
                         </Pressable>
                         {menuVisible && (
                             <View style={styles.dropdownMenu}>
@@ -402,7 +553,7 @@ const AiScreen: React.FC = () => {
                 <KeyboardAvoidingView
                     style={{ flex: 1 }}
                     behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-                    keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0}
+                    keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
                 >
                     {/* Chat List */}
                     <FlatList
@@ -416,35 +567,66 @@ const AiScreen: React.FC = () => {
 
                     {/* Input Area */}
                     <View style={styles.inputContainer}>
-                        <View style={styles.inputWrapper}>
-                            <TextInput
-                                style={styles.textInput}
-                                value={inputText}
-                                onChangeText={setInputText}
-                                placeholder="Ask about your trip..."
-                                placeholderTextColor="black"
-                                multiline
-                            />
+                        {currentSpeech !== '' && (
                             <Pressable
-                                style={[styles.iconButton, isListening && styles.listeningButton]}
-                                onPress={toggleListening}
+                                style={styles.muteButton}
+                                onPress={() => {
+                                    if (isSpeaking) {
+                                        Tts.stop();
+                                    } else {
+                                        Tts.speak(currentSpeech);
+                                    }
+                                }}
                             >
-                                <Ionicons name={isListening ? "mic" : "mic-outline"} size={20} color={isListening ? "white" : "#666"} />
+                                <Ionicons name={isSpeaking ? "volume-mute" : "volume-high"} size={18} color="white" />
+                                <Text style={{ color: 'white', fontSize: 12 }}>{isSpeaking ? 'Mute' : 'Speak'}</Text>
                             </Pressable>
-                        </View>
+                        )}
+                        <LinearGradient
+                            colors={['#00008B', '#ADD8E6']}
+                            start={{ x: 1, y: 0 }}
+                            end={{ x: 0, y: 0 }}
+                            style={styles.inputWrapper}
+                        >
+                            <View style={styles.inputInner}>
+                                <TextInput
+                                    style={styles.textInput}
+                                    value={inputText}
+                                    onChangeText={setInputText}
+                                    placeholder="Ask about your trip..."
+                                    placeholderTextColor="black"
+                                    multiline
+                                />
+                                {inputText.trim().length > 0 ? (
+                                    <Pressable
+                                        style={[styles.iconButton, { backgroundColor: '#007AFF', borderRadius: 50, padding: 10 }]}
+                                        onPress={() => sendMessage()}
+                                        disabled={isLoading}
+                                    >
+                                        {isLoading ? (
+                                            <ActivityIndicator size="small" color="white" />
+                                        ) : (
+                                            <Ionicons name="send" size={18} color="white" />
+                                        )}
+                                    </Pressable>
+                                ) : (
+                                    <Pressable
+                                        style={[styles.iconButton, isListening && styles.listeningButton]}
+                                        onPress={toggleListening}
+                                    >
+                                        <Ionicons name={isListening ? "mic" : "mic-outline"} size={24} color={isListening ? "white" : "#666"} />
+                                    </Pressable>
+                                )}
+                            </View>
+                        </LinearGradient>
 
-                        <Pressable style={styles.sendButton} onPress={sendMessage} disabled={isLoading}>
-                            {isLoading ? (
-                                <ActivityIndicator size="small" color="white" />
-                            ) : (
-                                <Ionicons name="send" size={20} color="white" />
-                            )}
-                        </Pressable>
+
                     </View>
                 </KeyboardAvoidingView>
             </SafeAreaView>
-        </ImageBackground>
+        </LinearGradient>
     );
+
 };
 
 export default AiScreen;
@@ -452,7 +634,7 @@ export default AiScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffffff',
     },
     safeArea: {
         flex: 1,
@@ -463,14 +645,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
-        paddingVertical: 10,
+        paddingVertical: 21,
         borderBottomWidth: 1,
         borderBottomColor: 'rgba(0,0,0,0.1)',
-        backgroundColor: 'rgba(255,255,255,0.7)',
+        backgroundColor: '#007AFF',
+        marginTop: -35,
     },
     headerTitle: {
-        fontSize: 18,
+        fontSize: 25,
         fontWeight: 'bold',
+        color: 'white',
+        bottom: -10,
+    },
+    headerIconContainer: {
+        padding: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        bottom: -10,
     },
     list: {
         flex: 1,
@@ -492,9 +683,10 @@ const styles = StyleSheet.create({
     },
     aiBubble: {
         alignSelf: 'flex-start',
-        backgroundColor: '#F0F0F0',
+        backgroundColor: '#deeaf1ff',
         borderBottomLeftRadius: 4,
     },
+
     messageText: {
         fontSize: 16,
     },
@@ -508,29 +700,39 @@ const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 10,
-        borderTopWidth: 1,
-        borderTopColor: '#eee',
-        backgroundColor: '#fff',
-        marginBottom: -9,
+        padding: 8,
+        paddingVertical: 0.1,
+        borderRadius: 60,
+        backgroundColor: 'transparent',
     },
+
     inputWrapper: {
         flex: 1,
+        borderRadius: 60,
+        marginBottom: 5,
+        minHeight: 55,
+        padding: 5,
+        backgroundColor: 'transparent',
+    },
+
+    inputInner: {
+        width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#f5f5f5',
-        paddingVertical: 4,
-        borderRadius: 60,
+        backgroundColor: '#ffffff',
+        borderRadius: 58,
+        maxHeight: 120,
         paddingRight: 5,
-        marginRight: 10,
     },
+
     textInput: {
         flex: 1,
         paddingHorizontal: 15,
+        maxHeight: 120,
+        minHeight: 50,
+        fontSize: 18,
+        color: '#000000',
         paddingVertical: 10,
-        maxHeight: 100,
-        fontSize: 16,
-        color: '#0b0000ff',
     },
     iconButton: {
         padding: 8,
@@ -546,7 +748,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    muteButton: {
+        position: 'absolute',
+        top: -45,
+        right: 15,
+        backgroundColor: '#ff4444',
+        paddingHorizontal: 15,
+        paddingVertical: 8,
+        borderRadius: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 5,
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+    },
     dropdownMenu: {
+
         position: 'absolute',
         top: 30,
         right: 0,

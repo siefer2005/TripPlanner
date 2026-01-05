@@ -25,14 +25,14 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Place from '../components/Place';
 import { API_URL } from '../constants/config';
 
-type RootStackParamList = {
-  TripPlan: { item: any; user: any }; // Using any for now to match loose typing from JS, ideally ITrip
+export type RootStackParamList = {
+  Plan: { item: any; user: any }; // Match the name in StackNavigator
   Ai: { name: string };
   Map: { places: any[] };
   Create: undefined;
 };
 
-type TripPlanRouteProp = RouteProp<RootStackParamList, 'TripPlan'>;
+type TripPlanRouteProp = RouteProp<RootStackParamList, 'Plan'>;
 
 const TripPlanScreen = () => {
   const route = useRoute<TripPlanRouteProp>();
@@ -84,8 +84,15 @@ const TripPlanScreen = () => {
   const photo = route?.params?.item?.background; // Using background as photo wasn't in type definition
 
   // Logic
-  const formatDate = (date: string) => {
-    return moment(date).format('D MMMM');
+  const formatDate = (date: any) => {
+    if (!date || date === 'Invalid date') return '';
+    // Try parsing with specific formats first
+    let m = moment(date, ['YYYY-MM-DD', 'DD MMMM YYYY'], true);
+    if (!m.isValid()) {
+      m = moment(date); // Fallback to loose parsing
+    }
+    if (!m.isValid()) return date;
+    return m.format('D MMM');
   };
 
   const validateEmail = (email: string) => {
@@ -160,7 +167,7 @@ const TripPlanScreen = () => {
         setEmail('');
       }
     } else {
-      alert('Please enter a valid email.');
+      Alert.alert('Invalid Email', 'Please enter a valid email.');
     }
   };
 
@@ -495,9 +502,10 @@ const TripPlanScreen = () => {
   };
 
   return (
-    <>
+    <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView>
+
           <View>
             <Image
               style={{ width: '100%', height: 200, resizeMode: 'cover' }}
@@ -505,90 +513,82 @@ const TripPlanScreen = () => {
                 uri: 'https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=800',
               }}
             />
-            <View>
-              <View>
-                <Pressable
-                  style={{
-                    padding: 20,
-                    backgroundColor: 'white',
-                    width: 300,
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                    borderRadius: 10,
-                    position: 'absolute',
-                    top: -100,
-                    left: '50%',
-                    transform: [{ translateX: -150 }],
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: 2 },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 3.84,
-                    elevation: 5,
-                  }}>
-                  <Text
-                    numberOfLines={1}
-                    style={{
-                      textAlign: 'left',
-                      fontSize: 22,
-                      fontWeight: 'bold',
-                    }}>
-                    Trip To {tripName}
+            <View
+              style={{
+                backgroundColor: 'white',
+                width: '90%',
+                marginTop: -80,
+                alignSelf: 'center',
+                borderRadius: 20,
+                padding: 20,
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: 5 },
+                shadowOpacity: 0.3,
+                shadowRadius: 6.65,
+                elevation: 10,
+                zIndex: 100,
+              }}>
+              <Text
+                numberOfLines={1}
+                style={{
+                  textAlign: 'left',
+                  fontSize: 22,
+                  fontWeight: 'bold',
+                  color: '#202020',
+                }}>
+                Trip To {tripName || route?.params?.item?.tripName || 'your Destination'}
+              </Text>
+              <View style={{ marginTop: 10 }}>
+                <View>
+                  <Text style={{ fontWeight: '500', color: '#202020', fontSize: 14 }}>
+                    {formatDate(route?.params?.item?.startDate) || 'Start Date'} -{' '}
+                    {formatDate(route?.params?.item?.endDate) || 'End Date'}
                   </Text>
-                  <View style={{ marginTop: 10 }}>
-                    <View>
-                      <Text style={{ fontWeight: '500' }}>
-                        {route?.params?.item.startDate} -{' '}
-                        {route?.params?.item.endDate}
-                      </Text>
-                      <Text style={{ color: 'gray', marginTop: 4 }}>
-                        {route?.params?.item?.startDay} -{' '}
-                        {route?.params?.item?.endDay}
-                      </Text>
-                    </View>
+                  <Text style={{ color: '#606060', marginTop: 4, fontSize: 13 }}>
+                    {route?.params?.item?.startDay || ''} -{' '}
+                    {route?.params?.item?.endDay || ''}
+                  </Text>
+                </View>
 
-                    <View style={{ marginTop: 10 }}>
-                      <View
+                <View style={{ marginTop: 10 }}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: 10,
+                    }}>
+                    <Image
+                      style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: '#E0E0E0' }}
+                      source={{
+                        uri: route?.params?.user?.photo || route?.params?.user?.user?.photo || 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
+                      }}
+                    />
+
+                    <Pressable
+                      onPress={() => setOpenShareModal(!openShareModal)}
+                      style={{
+                        paddingHorizontal: 12,
+                        paddingVertical: 8,
+                        borderRadius: 25,
+                        alignSelf: 'flex-start',
+                        backgroundColor: 'black',
+                      }}>
+                      <Text
                         style={{
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          gap: 10,
+                          textAlign: 'center',
+                          color: 'white',
+                          fontSize: 12,
+                          fontWeight: '600',
                         }}>
-                        <Image
-                          style={{ width: 34, height: 34, borderRadius: 17 }}
-                          source={{
-                            uri: route?.params?.user?.user?.photo,
-                          }}
-                        />
-
-                        <Pressable
-                          onPress={() => setOpenShareModal(!openShareModal)}
-                          style={{
-                            paddingHorizontal: 10,
-                            paddingVertical: 8,
-                            borderRadius: 25,
-                            alignSelf: 'flex-start',
-                            backgroundColor: 'black',
-                          }}>
-                          <Text
-                            style={{
-                              textAlign: 'center',
-                              color: 'white',
-                              fontSize: 12,
-                              fontWeight: '500',
-                            }}>
-                            Share
-                          </Text>
-                        </Pressable>
-                      </View>
-                    </View>
+                        Share
+                      </Text>
+                    </Pressable>
                   </View>
-                </Pressable>
+                </View>
               </View>
             </View>
 
-            <View
-              style={{ backgroundColor: 'white', height: 80, zIndex: -100 }}
-            />
+            <View style={{ height: 20 }} />
 
             <View
               style={{
@@ -671,7 +671,7 @@ const TripPlanScreen = () => {
                           size={25}
                           color="black"
                         />
-                        <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#202020' }}>
                           Notes
                         </Text>
                       </View>
@@ -688,7 +688,7 @@ const TripPlanScreen = () => {
                         style={{
                           fontWeight: '500',
                           fontStyle: 'italic',
-                          color: 'gray',
+                          color: '#606060',
                         }}>
                         Write or paste general notes here, e.g. how to get
                       </Text>
@@ -718,7 +718,7 @@ const TripPlanScreen = () => {
                           size={25}
                           color="black"
                         />
-                        <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#202020' }}>
                           Places to Visit
                         </Text>
                       </View>
@@ -770,7 +770,7 @@ const TripPlanScreen = () => {
                           color="gray"
                         />
 
-                        <TextInput style={{}} placeholder="Add a place" editable={false} />
+                        <TextInput style={{color:'black'}} placeholder="Add a place" editable={false} />
                       </Pressable>
 
                       <View
@@ -1037,13 +1037,13 @@ const TripPlanScreen = () => {
                             alignItems: 'center',
                             gap: 8,
                           }}>
-                          <Text style={{ fontSize: 27, fontWeight: 'bold' }}>
+                          <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#202020' }}>
                             {formatDate(item.date)}
                           </Text>
                           <Text
                             style={{
                               fontSize: 14,
-                              color: 'gray',
+                              color: '#606060',
                               fontWeight: '500',
                             }}>
                             Add subheading
@@ -1098,6 +1098,7 @@ const TripPlanScreen = () => {
                                             style={{
                                               fontSize: 16,
                                               fontWeight: '500',
+                                              color: '#202020',
                                             }}>
                                             {activity?.name}{' '}
                                           </Text>
@@ -1222,7 +1223,7 @@ const TripPlanScreen = () => {
                     }}>
                     <MaterialIcons name="search" size={22} color="gray" />
 
-                    <Text>{tripName}</Text>
+                    <Text style={{ color: 'black' }}>{tripName}</Text>
                   </View>
 
                   <View style={{ marginTop: 12 }}>
@@ -1232,7 +1233,7 @@ const TripPlanScreen = () => {
                         alignItems: 'center',
                         justifyContent: 'space-between',
                       }}>
-                      <Text style={{ fontSize: 16, fontWeight: 'bold' }}>
+                      <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black' }}>
                         Categories
                       </Text>
                       <Text style={{ fontSize: 16, fontWeight: 'bold' }}>
@@ -1247,25 +1248,27 @@ const TripPlanScreen = () => {
                         gap: 10,
                         marginTop: 15,
                       }}>
-                      <View
+                      <Pressable
+                        onPress={() => navigation.navigate('Restaurants', { location: tripName })}
                         style={{
                           backgroundColor: '#E8E8E8',
                           padding: 12,
                           borderRadius: 7,
                           flex: 1,
                         }}>
-                        <Text style={{ fontSize: 15 }}>🍽️ Restaurants</Text>
-                      </View>
+                        <Text style={{ fontSize: 15, color: '#202020' }}>🍽️ Restaurants</Text>
+                      </Pressable>
 
-                      <View
+                      <Pressable
+                        onPress={() => navigation.navigate('Cafe', { location: tripName })}
                         style={{
                           backgroundColor: '#E8E8E8',
                           padding: 12,
                           borderRadius: 7,
                           flex: 1,
                         }}>
-                        <Text style={{ fontSize: 15 }}>☕️ Cafes</Text>
-                      </View>
+                        <Text style={{ fontSize: 15, color: '#202020' }}>☕️ Cafes</Text>
+                      </Pressable>
                     </View>
 
                     <View
@@ -1282,7 +1285,7 @@ const TripPlanScreen = () => {
                           borderRadius: 7,
                           flex: 1,
                         }}>
-                        <Text style={{ fontSize: 15 }}>🤑 Cheap Rates</Text>
+                        <Text style={{ fontSize: 15, color: '#202020' }}>🤑 Cheap Rates</Text>
                       </View>
 
                       <View
@@ -1292,7 +1295,7 @@ const TripPlanScreen = () => {
                           borderRadius: 7,
                           flex: 1,
                         }}>
-                        <Text style={{ fontSize: 15 }}>💌 Travel</Text>
+                        <Text style={{ fontSize: 15, color: '#202020' }}>💌 Travel</Text>
                       </View>
                     </View>
                     <View
@@ -1306,7 +1309,7 @@ const TripPlanScreen = () => {
                   </View>
 
                   <View>
-                    <Text style={{ fontSize: 16, fontWeight: 'bold' }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#202020' }}>
                       Video Guides
                     </Text>
                     <View
@@ -1395,7 +1398,7 @@ const TripPlanScreen = () => {
                         alignItems: 'center',
                         justifyContent: 'space-between',
                       }}>
-                      <Text style={{ fontSize: 17, fontWeight: 'bold' }}>
+                      <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#202020' }}>
                         Expenses
                       </Text>
 
@@ -1436,6 +1439,7 @@ const TripPlanScreen = () => {
                                   fontSize: 15,
                                   fontWeight: '500',
                                   flex: 1,
+                                  color: '#202020',
                                 }}>
                                 {item?.category}
                               </Text>
@@ -2118,7 +2122,7 @@ const TripPlanScreen = () => {
           color="white"
         />
       </Pressable>
-    </>
+    </View>
   );
 };
 

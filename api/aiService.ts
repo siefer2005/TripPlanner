@@ -48,7 +48,7 @@ export const generateSystemPrompt = (name: string, userDetails: any, tripDetails
 
     ROLE & GOAL:
     - Act as a knowledgeable local guide and financial planner.
-    - Your goal is to help the user request personalized advice based on their specific itinerary, budget, and group size.
+    - Your goal is to help the user request personalized advice based on their specific itinerary, budget, dates, and group size.
 
     INSTRUCTIONS:
     instructions:
@@ -58,8 +58,7 @@ export const generateSystemPrompt = (name: string, userDetails: any, tripDetails
        - Food (per meal)
        - Transport (best options for ${tripDetails?.travelers?.length || 1} people)
        - Entry Fees
-    4. **Style**: FAIL-SAFE RULE: Do NOT use ANY emojis. Do NOT use special symbols like hashtags or asterisks other than standard Markdown bolding. Keep text strictly professional, clean, and simple.
-
+    4. **Style**: FAIL-SAFE RULE: Do NOT use ANY emojis. Do NOT use special symbols like hashtags or asterisks. Keep text strictly professional, clean, and simple.
     Help the user visualize their trip and manage their budget effectively.`;
 };
 
@@ -74,14 +73,27 @@ export const sendChatRequest = async (messages: Message[]) => {
                 'X-Title': 'TravelPlanner', // Required by OpenRouter
             },
             body: JSON.stringify({
-                model: 'openai/gpt-3.5-turbo',
-                transforms: ["middle-out"], // Request compression from OpenRouter
+                model: 'mistralai/mistral-7b-instruct:free',
                 messages: messages.map(m => ({ role: m.role, content: m.content })),
             }),
         });
 
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('OpenRouter API Error Status:', response.status);
+            console.error('OpenRouter API Error Data:', errorData);
+            return { error: errorData.error || errorData };
+        }
+
         const data = await response.json();
+
+        // Cleanup: Remove common start-of-sentence tokens like <s> sometimes returned by Mistral/OpenRouter
+        if (data.choices && data.choices[0]?.message?.content) {
+            data.choices[0].message.content = data.choices[0].message.content.replace(/^(\s*|\s+)/i, '');
+        }
+
         return data;
+
     } catch (error) {
         console.error('Error in sendChatRequest:', error);
         throw error;

@@ -87,28 +87,30 @@ const ChooseImage: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#484848' }}>
-      <View>
-        <Text style={styles.title}>Choose Image</Text>
-      </View>
-
-      <ScrollView>
-        <View style={styles.grid}>
-          {images.map((item) => (
-            <Pressable
-              key={item.id}
-              onPress={() => handleSelectImage(item.image)}
-              style={{ margin: 10 }}
-            >
-              <Image
-                style={styles.image}
-                source={{ uri: item.image }}
-              />
-            </Pressable>
-          ))}
+    <View style={{ flex: 1, backgroundColor: '#484848' }}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View>
+          <Text style={styles.title}>Choose Image</Text>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+
+        <ScrollView>
+          <View style={styles.grid}>
+            {images.map((item) => (
+              <Pressable
+                key={item.id}
+                onPress={() => handleSelectImage(item.image)}
+                style={{ margin: 10 }}
+              >
+                <Image
+                  style={styles.image}
+                  source={{ uri: item.image }}
+                />
+              </Pressable>
+            ))}
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 };
 

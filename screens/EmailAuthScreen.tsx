@@ -114,7 +114,7 @@ const EmailAuthScreen: React.FC = () => {
                 body: JSON.stringify(body),
             }).catch((fetchError) => {
                 console.error('Fetch error:', fetchError);
-                throw new Error('Cannot connect to server. Please check if the backend is running.');
+                throw new Error('Cannot connect to server. Please check if the backend is running and you are on the same Wi-Fi.');
             });
 
             console.log('Response status:', response.status);

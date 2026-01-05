@@ -5,6 +5,7 @@ import moment, { Moment } from 'moment';
 import React, { useContext, useEffect, useState } from 'react';
 
 import {
+    Alert,
     ImageBackground,
     Pressable,
     StyleSheet,
@@ -95,7 +96,7 @@ const CreateTrip: React.FC = () => {
     ----------------------------------- */
     const handleCreateTrip = async (): Promise<void> => {
         if (!tripName || !startDate || !endDate) {
-            alert('Please fill all fields');
+            Alert.alert('Missing Information', 'Please fill all fields');
             return;
         }
 
@@ -156,89 +157,92 @@ const CreateTrip: React.FC = () => {
     ----------------------------------- */
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
             <ImageBackground
                 style={{ width: '100%', height: '100%' }}
                 source={{ uri: background || image }}
             >
-                {/* Header */}
-                <View style={styles.header}>
-                    <Pressable onPress={() => navigation.goBack()}>
-                        <Text style={styles.cancel}>Cancel</Text>
-                    </Pressable>
+                <SafeAreaView style={{ flex: 1 }}>
 
-                    <Pressable onPress={handleCreateTrip} style={styles.createBtn}>
-                        <Text style={styles.createText}>Create</Text>
-                    </Pressable>
-                </View>
+                    {/* Header */}
+                    <View style={styles.header}>
+                        <Pressable onPress={() => navigation.goBack()}>
+                            <Text style={styles.cancel}>Cancel</Text>
+                        </Pressable>
 
-                {/* Body */}
-                <View style={{ padding: 15 }}>
-                    <DateRangePicker
-                        onChange={setDates}
-                        startDate={startDate}
-                        endDate={endDate}
-                        displayedDate={displayedDate}
-                        range
-                    >
-                        <AntDesign name="calendar" size={25} color="white" />
-                    </DateRangePicker>
+                        <Pressable onPress={handleCreateTrip} style={styles.createBtn}>
+                            <Text style={styles.createText}>Create</Text>
+                        </Pressable>
+                    </View>
 
-                    <TextInput
-                        value={tripName}
-                        onChangeText={setTripName}
-                        placeholder="Trip name"
-                        placeholderTextColor="#c1c9d6"
-                        style={styles.tripInput}
-                    />
+                    {/* Body */}
+                    <View style={{ padding: 15 }}>
+                        <DateRangePicker
+                            onChange={setDates}
+                            startDate={startDate}
+                            endDate={endDate}
+                            displayedDate={displayedDate}
+                            range
+                        >
+                            <AntDesign name="calendar" size={25} color="white" />
+                        </DateRangePicker>
 
-                    {/* Itinerary */}
-                    <View style={styles.card}>
-                        <View style={styles.cardHeader}>
-                            <AntDesign name="calendar" size={25} color="black" />
-                            <Text style={styles.cardTitle}>Itinerary</Text>
-                        </View>
+                        <TextInput
+                            value={tripName}
+                            onChangeText={setTripName}
+                            placeholder="Trip name"
+                            placeholderTextColor="#c1c9d6"
+                            style={styles.tripInput}
+                        />
 
-                        <View style={styles.divider} />
+                        {/* Itinerary */}
+                        <View style={styles.card}>
+                            <View style={styles.cardHeader}>
+                                <AntDesign name="calendar" size={25} color="black" />
+                                <Text style={styles.cardTitle}>Itinerary</Text>
+                            </View>
 
-                        <View style={{ padding: 15 }}>
-                            <View style={styles.dateRow}>
-                                <View>
-                                    <Text style={styles.grayText}>
-                                        {startDay || 'Starts'}
-                                    </Text>
-                                    <Text>{formatDate(startDate)}</Text>
-                                </View>
+                            <View style={styles.divider} />
 
-                                <View>
-                                    <Text style={styles.grayText}>
-                                        {endDay || 'Ends'}
-                                    </Text>
-                                    <Text>{formatDate(endDate)}</Text>
+                            <View style={{ padding: 15 }}>
+                                <View style={styles.dateRow}>
+                                    <View>
+                                        <Text style={styles.grayText}>
+                                            {startDay || 'Starts'}
+                                        </Text>
+                                        <Text>{formatDate(startDate)}</Text>
+                                    </View>
+
+                                    <View>
+                                        <Text style={styles.grayText}>
+                                            {endDay || 'Ends'}
+                                        </Text>
+                                        <Text>{formatDate(endDate)}</Text>
+                                    </View>
                                 </View>
                             </View>
                         </View>
-                    </View>
 
-                    {/* Footer Cards */}
-                    <View style={styles.footerRow}>
-                        <View style={styles.footerCard}>
-                            <FontAwesome name="globe" size={25} color="black" />
-                            <Text style={styles.footerTitle}>TimeZone</Text>
-                            <Text style={styles.footerDesc}>Bengaluru, India</Text>
+                        {/* Footer Cards */}
+                        <View style={styles.footerRow}>
+                            <View style={styles.footerCard}>
+                                <FontAwesome name="globe" size={25} color="black" />
+                                <Text style={styles.footerTitle}>TimeZone</Text>
+                                <Text style={styles.footerDesc}>Bengaluru, India</Text>
+                            </View>
+
+                            <Pressable
+                                onPress={() => navigation.navigate('Choose')}
+                                style={styles.footerCard}
+                            >
+                                <FontAwesome name="photo" size={25} color="black" />
+                                <Text style={styles.footerDesc}>Choose Image</Text>
+                            </Pressable>
                         </View>
-
-                        <Pressable
-                            onPress={() => navigation.navigate('Choose')}
-                            style={styles.footerCard}
-                        >
-                            <FontAwesome name="photo" size={25} color="black" />
-                            <Text style={styles.footerDesc}>Choose Image</Text>
-                        </Pressable>
                     </View>
-                </View>
+                </SafeAreaView>
             </ImageBackground>
-        </SafeAreaView>
+        </View>
     );
 };
 

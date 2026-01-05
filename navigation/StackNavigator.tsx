@@ -8,6 +8,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 
 import AiScreen from '../screens/AiScreen';
+import CafeScreen from '../screens/Cafe';
 import ChooseImage from '../screens/ChooseImage';
 import CreateTrip from '../screens/CreateTrip';
 import DefineActivity from '../screens/DefineActivity';
@@ -17,6 +18,7 @@ import LoginScreen from '../screens/LoginScreen';
 import MapScreen from '../screens/MapScreen';
 import NewActivity from '../screens/NewActivity';
 import RegisterScreen from '../screens/RegisterScreen';
+import RestaurantsScreen from '../screens/Restaurants';
 import TripPlanScreen from '../screens/TripPlanScreen';
 import TripScreen from '../screens/TripScreen';
 
@@ -27,17 +29,19 @@ import { AuthContext } from '../AuthContext';
 ----------------------------------- */
 export type RootStackParamList = {
   Login: undefined;
+  Trip: { item: any } | undefined;
   Register: undefined;
-  EmailAuth: { isSignUp?: boolean } | undefined;
   Home: undefined;
-  Plan: { item: any; user: any };
+  Plan: { item: any; user: any } | undefined;
   Create: { image?: string } | undefined;
   Choose: undefined;
-  Trip: { item: any };
-  Activity: { name: string; tripId: string };
+  Activity: undefined;
   Define: undefined;
   Map: undefined;
-  Ai: { name: string } | undefined;
+  Ai: { name: string; tripId?: string } | undefined;
+  EmailAuth: { isSignUp?: boolean } | undefined;
+  Restaurants: { location: string } | undefined;
+  Cafe: { location: string } | undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -89,6 +93,8 @@ const StackNavigator: React.FC = () => {
       <Stack.Screen name="Define" component={DefineActivity} />
       <Stack.Screen name="Map" component={MapScreen} />
       <Stack.Screen name="Ai" component={AiScreen} />
+      <Stack.Screen name="Restaurants" component={RestaurantsScreen} />
+      <Stack.Screen name="Cafe" component={CafeScreen} />
     </Stack.Navigator>
   );
 

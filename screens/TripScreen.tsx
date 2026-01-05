@@ -68,60 +68,63 @@ const TripScreen: React.FC = () => {
 
   return (
     <>
-      <SafeAreaView>
+      <View style={{ flex: 1 }}>
         <ImageBackground
           style={{ width: '100%', height: '100%' }}
           source={{ uri: route?.params?.item?.background }}>
-          <View
-            style={{
-              padding: 13,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
-            <Pressable onPress={() => navigation.goBack()}>
-              <AntDesign name="arrow-left" size={25} color="white" />
-            </Pressable>
-            <View style={{ flexDirection: 'row', gap: 10 }}>
-              <AntDesign name="share-alt" size={25} color="white" />
-              <AntDesign name="setting" size={25} color="white" />
-            </View>
-          </View>
-
-          <View style={{ marginHorizontal: 13 }}>
-            <Text style={{ fontSize: 16, color: 'white', fontWeight: '600' }}>
-              1 Week ago
-            </Text>
-            <Text
+          <SafeAreaView style={{ flex: 1 }}>
+            <View
               style={{
-                fontSize: 26,
-                fontWeight: 'bold',
-                color: 'white',
-                marginTop: 7,
+                padding: 13,
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
               }}>
-              {route?.params?.item?.tripName}
-            </Text>
-          </View>
+              <Pressable onPress={() => navigation.goBack()}>
+                <AntDesign name="arrow-left" size={25} color="white" />
+              </Pressable>
+              <View style={{ flexDirection: 'row', gap: 10 }}>
+                <AntDesign name="share-alt" size={25} color="white" />
+                <AntDesign name="setting" size={25} color="white" />
+              </View>
+            </View>
 
-          <Pressable
-            onPress={() => setModalVisible(true)}
-            style={{
-              marginHorizontal: 13,
-              backgroundColor: '#c1c9d6',
-              marginVertical: 10,
-              borderRadius: 20,
-              padding: 15,
-              width: 120,
-            }}>
-            <AntDesign name="plus-circle" size={30} color="#202020" />
-            <Text style={{ fontSize: 15, color: '#404040', marginTop: 30 }}>
-              New Activity
-            </Text>
-          </Pressable>
+            <View style={{ marginHorizontal: 13 }}>
+              <Text style={{ fontSize: 16, color: 'white', fontWeight: '600' }}>
+                1 Week ago
+              </Text>
+              <Text
+                style={{
+                  fontSize: 26,
+                  fontWeight: 'bold',
+                  color: 'white',
+                  marginTop: 7,
+                }}>
+                {route?.params?.item?.tripName}
+              </Text>
+            </View>
+
+            <Pressable
+              onPress={() => setModalVisible(true)}
+              style={{
+                marginHorizontal: 13,
+                backgroundColor: '#c1c9d6',
+                marginVertical: 10,
+                borderRadius: 20,
+                padding: 15,
+                width: 120,
+              }}>
+              <AntDesign name="plus-circle" size={30} color="#202020" />
+              <Text style={{ fontSize: 15, color: '#404040', marginTop: 30 }}>
+                New Activity
+              </Text>
+            </Pressable>
+          </SafeAreaView>
         </ImageBackground>
-      </SafeAreaView>
+      </View>
 
       {/* MODAL */}
+
       <BottomModal
         visible={modalVisible}
 

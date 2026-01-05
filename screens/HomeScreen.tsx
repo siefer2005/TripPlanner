@@ -180,95 +180,97 @@ const HomeScreen: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={deleteModalVisible}
-        onRequestClose={() => setDeleteModalVisible(false)}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Delete Trip</Text>
-            <Text style={styles.modalDescription}>
-              Are you sure you want to delete this trip?
-            </Text>
-            <View style={styles.modalButtons}>
-              <Pressable
-                style={[styles.button, styles.buttonCancel]}
-                onPress={() => setDeleteModalVisible(false)}>
-                <Text style={styles.textStyle}>Cancel</Text>
-              </Pressable>
-              <Pressable
-                style={[styles.button, styles.buttonDelete]}
-                onPress={confirmDelete}>
-                <Text style={styles.textStyle}>Delete</Text>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={deleteModalVisible}
+          onRequestClose={() => setDeleteModalVisible(false)}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>Delete Trip</Text>
+              <Text style={styles.modalDescription}>
+                Are you sure you want to delete this trip?
+              </Text>
+              <View style={styles.modalButtons}>
+                <Pressable
+                  style={[styles.button, styles.buttonCancel]}
+                  onPress={() => setDeleteModalVisible(false)}>
+                  <Text style={styles.textStyle}>Cancel</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.button, styles.buttonDelete]}
+                  onPress={confirmDelete}>
+                  <Text style={styles.textStyle}>Delete</Text>
+                </Pressable>
+              </View>
+            </View>
+          </View>
+        </Modal>
+
+        <ScrollView>
+          {/* Header */}
+          <View style={styles.header}>
+            <Ionicons onPress={logout} name="person" size={30} color="orange" />
+            <View style={styles.headerIcons}>
+              <AntDesign name="search" size={30} color="orange" />
+              <Pressable onPress={() => navigation.navigate('Create')}>
+                <AntDesign name="plus" size={30} color="orange" />
               </Pressable>
             </View>
           </View>
-        </View>
-      </Modal>
 
-      <ScrollView>
-        {/* Header */}
-        <View style={styles.header}>
-          <Ionicons onPress={logout} name="person" size={30} color="orange" />
-          <View style={styles.headerIcons}>
-            <AntDesign name="search" size={30} color="orange" />
-            <Pressable onPress={() => navigation.navigate('Create')}>
-              <AntDesign name="plus" size={30} color="orange" />
+          {/* Title */}
+          <View style={{ padding: 10 }}>
+            <Text style={styles.title}>My Trips</Text>
+            <Text style={styles.year}>{currentYear}</Text>
+          </View>
+
+          {/* Trips */}
+          <View style={{ padding: 15 }}>
+            {trips.map((item) => (
+              <Pressable
+                key={item._id}
+                style={{ marginTop: 15 }}
+                onLongPress={() => handleLongPress(item._id)}
+                onPress={() =>
+                  navigation.navigate('Plan', { item, user })
+                }>
+                <ImageBackground
+                  imageStyle={{ borderRadius: 10 }}
+                  style={{ width: '100%', height: 220 }}
+                  source={{ uri: item.background }}>
+                  <View style={styles.tripHeader}>
+                    <Text style={styles.tripText}>
+                      {item.startDate} - {item.endDate}
+                    </Text>
+                    <Text style={styles.tripText}>
+                      {moment(item.createdAt).format('MMMM Do')}
+                    </Text>
+                  </View>
+                  <Text style={styles.tripName}>{item.tripName}</Text>
+                </ImageBackground>
+              </Pressable>
+            ))}
+          </View>
+
+          {/* CTA */}
+          <View style={styles.cta}>
+            <Text style={styles.ctaTitle}>Organize your next trip</Text>
+            <Text style={styles.ctaDesc}>
+              Create your next trip and plan the activities of your itinerary
+            </Text>
+
+            <Pressable
+              onPress={() => navigation.navigate('Create')}
+              style={styles.ctaButton}>
+              <Text style={styles.ctaButtonText}>Create a Trip</Text>
             </Pressable>
           </View>
-        </View>
-
-        {/* Title */}
-        <View style={{ padding: 10 }}>
-          <Text style={styles.title}>My Trips</Text>
-          <Text style={styles.year}>{currentYear}</Text>
-        </View>
-
-        {/* Trips */}
-        <View style={{ padding: 15 }}>
-          {trips.map((item) => (
-            <Pressable
-              key={item._id}
-              style={{ marginTop: 15 }}
-              onLongPress={() => handleLongPress(item._id)}
-              onPress={() =>
-                navigation.navigate('Plan', { item, user })
-              }>
-              <ImageBackground
-                imageStyle={{ borderRadius: 10 }}
-                style={{ width: '100%', height: 220 }}
-                source={{ uri: item.background }}>
-                <View style={styles.tripHeader}>
-                  <Text style={styles.tripText}>
-                    {item.startDate} - {item.endDate}
-                  </Text>
-                  <Text style={styles.tripText}>
-                    {moment(item.createdAt).format('MMMM Do')}
-                  </Text>
-                </View>
-                <Text style={styles.tripName}>{item.tripName}</Text>
-              </ImageBackground>
-            </Pressable>
-          ))}
-        </View>
-
-        {/* CTA */}
-        <View style={styles.cta}>
-          <Text style={styles.ctaTitle}>Organize your next trip</Text>
-          <Text style={styles.ctaDesc}>
-            Create your next trip and plan the activities of your itinerary
-          </Text>
-
-          <Pressable
-            onPress={() => navigation.navigate('Create')}
-            style={styles.ctaButton}>
-            <Text style={styles.ctaButtonText}>Create a Trip</Text>
-          </Pressable>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 };
 
