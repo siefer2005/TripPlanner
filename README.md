@@ -1,54 +1,120 @@
-<<<<<<< HEAD
-# Welcome to your Expo app 👋
+# TravelPlanner
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+TravelPlanner is a cutting-edge mobile application designed to simplify and enhance your travel experiences. Built with **React Native CLI**, it leverages the power of **Artificial Intelligence** to generate personalized trip itineraries, integrates **Google Maps** for seamless navigation, and offers secure authentication via **Google OAuth 2.0**.
 
-## Get started
+## 🚀 Features
 
-1. Install dependencies
+- **AI-Powered Itineraries**: Generate detailed day-by-day trip plans using OpenAI.
+- **Smart Destination Search**: Find places easily with Google Places Autocomplete and Geocoding API.
+- **Interactive Maps**: Visualize your trip with integrated Google Maps.
+- **Secure Authentication**: seamless sign-in experience using Google OAuth 2.0.
+- **Real-Time Features**: Integrated with LiveKit for real-time capabilities.
+- **Modern UI/UX**: A smooth, responsive interface featuring Lottie animations and linear gradients.
+- **Trip Management**: Create, store, and manage your travel history.
+
+## 🛠 Tech Stack
+
+- **Framework**: React Native CLI
+- **Language**: TypeScript
+- **Navigation**: React Navigation (Native Stack)
+- **AI Integration**: OpenAI API
+- **Maps & Geolocation**: React Native Maps, Google Places Autocomplete
+- **Authentication**: React Native Google Sign-In
+- **Animations**: Lottie React Native
+
+## 📋 Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) 
+- [React Native CLI environment setup](https://reactnative.dev/docs/environment-setup) (Android Studio / Xcode)
+- A Google Cloud Project with the following APIs enabled:
+  - Maps SDK for Android/iOS
+  - Places API
+  - Geocoding API
+  - Google Identity (OAuth 2.0)
+- An OpenAI API Key
+
+## 📦 Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/siefer2005/TripPlanner.git
+   cd TripPlanner
+   ```
+
+2. **Install dependencies:**
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3. **Configure Environment Variables:**
+   
+   Ensure you have your API keys ready. Check for configuration files like `chatConfig.ts` or `.env` (if applicable) to insert your keys:
+   - `OPENAI_API_KEY`
+   - Google Maps API Keys
+   - Google OAuth Client IDs
+
+4. **Start the Backend API:**
+   
+   The project includes a local backend server.
 
    ```bash
-   npx expo start
+   cd api
+   npm install
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+## 📱 Running the App
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Return to the root directory and run the application.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### Android
 
 ```bash
-npm run reset-project
+# This command runs the backend and the android app concurrently
+npm run android
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Or manually:
 
-## Learn more
+```bash
+npx react-native run-android
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### iOS
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm run ios
+```
 
-## Join the community
+## 📂 Project Structure
 
-Join our community of developers creating universal apps.
+```
+TravelPlanner/
+├── api/                 # Backend server code
+├── android/             # Android native code
+├── ios/                 # iOS native code
+├── navigation/          # Navigation configuration
+├── screens/             # Application screens (Login, Home, AI Screen, etc.)
+├── components/          # Reusable UI components
+├── assets/              # Images, fonts, and animations
+├── package.json         # Dependencies and scripts
+└── README.md            # Project documentation
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-=======
-# TravelPlanner
->>>>>>> 5c29c982a2963fc3838520903e3dab1fa6fc4acc
+## 🤝 Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License.
