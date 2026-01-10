@@ -1,3 +1,4 @@
+import { GOOGLE_MAPS_API_KEY } from '@env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Voice, { SpeechResultsEvent } from '@react-native-voice/voice';
 
@@ -270,16 +271,15 @@ const AiScreen: React.FC = () => {
                     timestamp: Date.now(),
                 };
 
- 
+
                 let placeImageUrl = undefined;
                 if (name) {
                     try {
-                        const GOOGLE_API_KEY = 'AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs';
-                        const placeRes = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${name}&inputtype=textquery&fields=photos&key=${GOOGLE_API_KEY}`);
+                        const placeRes = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${name}&inputtype=textquery&fields=photos&key=${GOOGLE_MAPS_API_KEY}`);
                         const placeData = await placeRes.json();
                         if (placeData.candidates && placeData.candidates.length > 0 && placeData.candidates[0].photos) {
                             const photoRef = placeData.candidates[0].photos[0].photo_reference;
-                            placeImageUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photoRef}&key=${GOOGLE_API_KEY}`;
+                            placeImageUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photoRef}&key=${GOOGLE_MAPS_API_KEY}`;
                         }
                     } catch (err) {
                         console.error("Failed to fetch place image for prompt", err);

@@ -14,8 +14,8 @@ import User from './models/user';
 
 dotenv.config();
 
-const LIVEKIT_API_KEY = 'APInzxJDarKowaG';
-const LIVEKIT_API_SECRET = 'lZIzFwfi71e1utKlhDAVFhFxeOrOxikTF6QUTAaeC3BA';
+const LIVEKIT_API_KEY = process.env.LIVEKIT_API_KEY || '';
+const LIVEKIT_API_SECRET = process.env.LIVEKIT_API_SECRET || '';
 
 
 /* -------------------- App Setup -------------------- */
@@ -42,7 +42,7 @@ server.on('error', (e: any) => {
 
 
 /* -------------------- JWT -------------------- */
-const JWT_SECRET: string = crypto.randomBytes(64).toString('hex');
+const JWT_SECRET: string = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex');
 
 /* -------------------- Create Trip -------------------- */
 app.post('/trip', async (req: Request, res: Response) => {
@@ -160,7 +160,7 @@ app.post('/trip/:tripId/addPlace', async (req: Request, res: Response) => {
   const { tripId } = req.params;
   const { placeId } = req.body;
 
-  const API_KEY = 'AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs';
+  const API_KEY = process.env.GOOGLE_MAPS_API_KEY || '';
 
   try {
     const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${API_KEY}`;

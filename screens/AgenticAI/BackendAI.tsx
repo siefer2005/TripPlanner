@@ -1,8 +1,10 @@
-export const LIVEKIT_API_KEY = 'APInzxJDarKowaG';
-export const LIVEKIT_API_SECRET = 'lZIzFwfi71e1utKlhDAVFhFxeOrOxikTF6QUTAaeC3BA';
+import { LIVEKIT_API_KEY as ENV_LIVEKIT_KEY, LIVEKIT_API_SECRET as ENV_LIVEKIT_SECRET, OPENROUTER_API_KEY as ENV_OPENROUTER_KEY } from '@env';
+
+export const LIVEKIT_API_KEY = ENV_LIVEKIT_KEY;
+export const LIVEKIT_API_SECRET = ENV_LIVEKIT_SECRET;
 export const LIVEKIT_WS_URL = 'wss://travelplanner-wwkns8ur.livekit.cloud';
 
-export const OPENROUTER_API_KEY = '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';
+export const OPENROUTER_API_KEY = ENV_OPENROUTER_KEY;
 
 export const SYSTEM_PROMPT = `You are "TravelPlanner AI" - a smart travel assistant.
 Rules:
@@ -31,8 +33,8 @@ export const sendChatRequest = async (messages: Message[]) => {
             headers: {
                 'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
                 'Content-Type': 'application/json',
-                'HTTP-Referer': 'https://travelplanner.app', 
-                'X-Title': 'TravelPlanner', 
+                'HTTP-Referer': 'https://travelplanner.app',
+                'X-Title': 'TravelPlanner',
             },
             body: JSON.stringify({
                 model: 'meta-llama/llama-3.2-3b-instruct:free',
@@ -51,7 +53,7 @@ export const sendChatRequest = async (messages: Message[]) => {
 
         const data = await response.json();
 
-       
+
         if (data.choices && data.choices[0]?.message?.content) {
             data.choices[0].message.content = data.choices[0].message.content.replace(/^(\s*|\s+)/i, '');
         }

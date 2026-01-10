@@ -1,4 +1,4 @@
-export const OPENROUTER_API_KEY = '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';
+export const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '';
 
 export type Message = {
     id: string;

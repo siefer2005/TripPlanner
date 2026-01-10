@@ -1,5 +1,6 @@
 import { RouteProp, useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 
+import { GOOGLE_MAPS_API_KEY } from '@env';
 import moment from 'moment';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
@@ -182,7 +183,7 @@ const TripPlanScreen = () => {
   }, []);
 
   const fetchPlaceDetails = async (placeId: string) => {
-    const API_KEY = 'AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs';
+    const API_KEY = GOOGLE_MAPS_API_KEY;
     const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${API_KEY}`;
 
     try {
@@ -265,7 +266,7 @@ const TripPlanScreen = () => {
       try {
         const queryParams = new URLSearchParams({
           query: `tourist attractions in ${tripName}`,
-          key: 'AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs',
+          key: GOOGLE_MAPS_API_KEY,
         }).toString();
 
         const response = await fetch(
@@ -288,7 +289,7 @@ const TripPlanScreen = () => {
   }, []);
 
   const fetchDetails = async (placeId: string) => {
-    const API_KEY = 'AIzaSyAaJ7VzIGk_y8dvrx2b4yya119jQVZJnNs';
+    const API_KEY = GOOGLE_MAPS_API_KEY;
     const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${API_KEY}`;
     try {
       const response = await fetch(url);
