@@ -107,6 +107,12 @@ const AiScreen: React.FC = () => {
         loadHistory();
         setupVoice();
 
+        try {
+            Tts.setDefaultLanguage('en-US');
+        } catch (e) {
+            console.log("TTS language set failed", e);
+        }
+
         const onFinish = () => {
             setIsSpeaking(false);
             setCurrentSpeech('');
@@ -282,7 +288,7 @@ const AiScreen: React.FC = () => {
                             placeImageUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photoRef}&key=${GOOGLE_MAPS_API_KEY}`;
                         }
                     } catch (err) {
-                        console.error("Failed to fetch place image for prompt", err);
+                        console.warn("Failed to fetch place image for prompt", err);
                     }
                 }
 
@@ -353,7 +359,9 @@ const AiScreen: React.FC = () => {
 
             const apiMessages: any[] = [
                 { role: 'system', content: systemPrompt },
-                ...updatedMessages.map(m => ({ role: m.role, content: m.content }))
+                ...updatedMessages
+                    .filter(m => m.role !== 'prompt')
+                    .map(m => ({ role: m.role, content: m.content }))
             ];
 
             const data = await sendChatRequest(apiMessages);
@@ -376,11 +384,15 @@ const AiScreen: React.FC = () => {
                 const speechText = aiContent.replace(/[*#]/g, ''); // Remove markdown symbols
                 setCurrentSpeech(speechText);
                 setIsSpeaking(true);
-                Tts.speak(speechText);
+                try {
+                    Tts.speak(speechText);
+                } catch (ttsError) {
+                    console.warn("TTS Error:", ttsError);
+                }
             } else {
 
-                console.error("AI Error Detailed:", data);
-                const errorMsg = data.error?.message || "Failed to get response from AI";
+                console.warn("AI Error Detailed:", data);
+                const errorMsg = data.error?.message || (typeof data.error === 'object' ? JSON.stringify(data.error) : String(data.error)) || "Failed to get response from AI";
                 Alert.alert("AI Error", errorMsg);
             }
 

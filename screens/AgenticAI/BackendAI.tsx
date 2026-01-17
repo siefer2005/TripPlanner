@@ -4,7 +4,7 @@ export const LIVEKIT_API_KEY = ENV_LIVEKIT_KEY;
 export const LIVEKIT_API_SECRET = ENV_LIVEKIT_SECRET;
 export const LIVEKIT_WS_URL = 'wss://travelplanner-wwkns8ur.livekit.cloud';
 
-export const OPENROUTER_API_KEY = ENV_OPENROUTER_KEY;
+export const OPENROUTER_API_KEY = ENV_OPENROUTER_KEY || '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';
 
 export const SYSTEM_PROMPT = `You are "TravelPlanner AI" - a smart travel assistant.
 Rules:
@@ -37,7 +37,7 @@ export const sendChatRequest = async (messages: Message[]) => {
                 'X-Title': 'TravelPlanner',
             },
             body: JSON.stringify({
-                model: 'meta-llama/llama-3.2-3b-instruct:free',
+                model: 'google/gemini-2.0-flash-exp:free',
                 messages: finalMessages,
                 max_tokens: 150,
                 temperature: 0.7,

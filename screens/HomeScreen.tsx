@@ -219,7 +219,10 @@ const HomeScreen: React.FC = () => {
         <ScrollView>
           {/* Header */}
           <View style={styles.header}>
-            <Ionicons onPress={logout} name="person" size={30} color="orange" />
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <Ionicons onPress={logout} name="person" size={30} color="orange" />
+              <Ionicons onPress={() => navigation.navigate('Flight')} name="airplane" size={30} color="orange" />
+            </View>
             <View style={styles.headerIcons}>
               <Pressable onPress={() => navigation.navigate('Create')}>
                 <AntDesign name="plus" size={30} color="orange" />

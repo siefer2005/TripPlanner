@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -7,12 +9,11 @@ import jwt from 'jsonwebtoken';
 import moment from 'moment';
 import nodemailer from 'nodemailer';
 
-import dotenv from 'dotenv';
 import { AccessToken } from 'livekit-server-sdk';
 import Trip from './models/TripModel';
 import User from './models/user';
 
-dotenv.config();
+// dotenv.config(); // Moved to top
 
 const LIVEKIT_API_KEY = process.env.LIVEKIT_API_KEY || '';
 const LIVEKIT_API_SECRET = process.env.LIVEKIT_API_SECRET || '';

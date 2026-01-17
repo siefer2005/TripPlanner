@@ -1,4 +1,6 @@
-export const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '';
+import { OPENROUTER_API_KEY as ENV_OPENROUTER_API_KEY } from '@env';
+
+export const OPENROUTER_API_KEY = ENV_OPENROUTER_API_KEY;
 
 export type Message = {
     id: string;
@@ -10,7 +12,7 @@ export type Message = {
 export const getOptimizedTripContext = (details: any) => {
     if (!details) return 'No details available';
 
-    // Extract only essential information to save tokens
+
     const simplifiedItinerary = details.itinerary?.map((day: any) => ({
         date: day.date,
         activities: day.activities?.map((act: any) => `${act.title || act.name || 'Activity'} (${act.startTime || ''})`)
@@ -64,39 +66,94 @@ export const generateSystemPrompt = (name: string, userDetails: any, tripDetails
 };
 
 export const sendChatRequest = async (messages: Message[]) => {
-    try {
+    // Log key usage for debugging (masked)
+    const keyUsed = OPENROUTER_API_KEY;
+    console.log(`[AI Service] Sending request using Key: ${keyUsed ? '...' + keyUsed.slice(-6) : 'None'}`);
+
+    const headers = {
+        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://travelplanner.app',
+        'X-Title': 'TravelPlanner',
+    };
+
+    const attemptFetch = async (model: string) => {
+        console.log(`[AI Service] Attempting model: ${model}`);
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-                'Content-Type': 'application/json',
-                'HTTP-Referer': 'https://travelplanner.app', // Required by OpenRouter
-                'X-Title': 'TravelPlanner', // Required by OpenRouter
-            },
+            headers,
             body: JSON.stringify({
-                model: 'mistralai/mistral-7b-instruct:free',
+                model,
                 messages: messages.map(m => ({ role: m.role, content: m.content })),
             }),
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
-            console.error('OpenRouter API Error Status:', response.status);
-            console.error('OpenRouter API Error Data:', errorData);
-            return { error: errorData.error || errorData };
+            let errorData;
+            try {
+                errorData = await response.json();
+            } catch (e) {
+                const textBody = await response.text().catch(() => "No readable response body");
+                errorData = { message: `API Error (${response.status}): ${textBody.substring(0, 100)}` };
+            }
+            console.warn(`[AI Service] Warn with ${model}:`, errorData);
+            throw { status: response.status, data: errorData };
         }
+        return response.json();
+    };
 
-        const data = await response.json();
-
-        // Cleanup: Remove common start-of-sentence tokens like <s> sometimes returned by Mistral/OpenRouter
-        if (data.choices && data.choices[0]?.message?.content) {
-            data.choices[0].message.content = data.choices[0].message.content.replace(/^(\s*|\s+)/i, '');
-        }
-
-        return data;
-
-    } catch (error) {
-        console.error('Error in sendChatRequest:', error);
-        throw error;
+    if (!OPENROUTER_API_KEY) {
+        return { error: { message: "API Key is missing. Please check your .env file." } };
     }
+
+    // Prioritize Standard models (require credits/auth) then Free models
+    const models = [
+        'google/gemini-2.0-flash-exp:free',
+        'meta-llama/llama-3.2-3b-instruct:free', // Reliable fallback
+    ];
+
+    let lastError: any = null;
+
+    for (const model of models) {
+        let retries = 0;
+        const MAX_RETRIES = 3;
+
+        while (retries <= MAX_RETRIES) {
+            try {
+                const data = await attemptFetch(model);
+
+                // Success! Cleanup content
+                if (data.choices && data.choices[0]?.message?.content) {
+                    data.choices[0].message.content = data.choices[0].message.content.replace(/^(\s*|\s+)/i, '');
+                }
+                return data;
+            } catch (error: any) {
+                lastError = error;
+                const isRateLimit = error.status === 429;
+
+                if (isRateLimit && retries < MAX_RETRIES) {
+                    retries++;
+                    const delay = retries * 2000;
+                    console.warn(`[AI Service] Rate limited (${model}). Retrying in ${delay / 1000}s... (${retries}/${MAX_RETRIES})`);
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    continue;
+                }
+
+                // If not rate limit or max retries reached, handle logging and break to next model
+                const isServerErr = error.status >= 500;
+                if (isRateLimit || isServerErr) {
+                    console.warn(`[AI Service] Model ${model} failed (${error.status}). Switching or giving up...`);
+                } else {
+                    console.warn(`[AI Service] Model ${model} error (${error.status}). Unexpected error.`);
+                }
+                break; // Break retry loop, try next model
+            }
+        }
+    }
+
+    // If we get here, all models failed
+    console.warn('[AI Service] All models failed. Last error:', lastError);
+    return {
+        error: lastError?.data || { message: "AI Service Unavailable. Please check your internet or API limits." }
+    };
 };

@@ -14,6 +14,8 @@ import ChooseImage from '../screens/ChooseImage';
 import CreateTrip from '../screens/CreateTrip';
 import DefineActivity from '../screens/DefineActivity';
 import EmailAuthScreen from '../screens/EmailAuthScreen';
+import FlightHome from '../screens/Flight/FlightHome';
+import FlightResult from '../screens/Flight/FlightResult';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import MapScreen from '../screens/MapScreen';
@@ -46,6 +48,8 @@ export type RootStackParamList = {
   Restaurants: { location: string } | undefined;
   Cafe: { location: string } | undefined;
   Settings: undefined;
+  Flight: undefined;
+  FlightResult: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -101,6 +105,8 @@ const StackNavigator: React.FC = () => {
       <Stack.Screen name="Restaurants" component={RestaurantsScreen} />
       <Stack.Screen name="Cafe" component={CafeScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
+      <Stack.Screen name="Flight" component={FlightHome} />
+      <Stack.Screen name="FlightResult" component={FlightResult} />
     </Stack.Navigator>
   );
 
