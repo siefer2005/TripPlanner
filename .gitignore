@@ -43,3 +43,9 @@ app-example
 
 # Environment variables
 .env
+
+# Android
+android/build/
+android/.gradle/
+android/app/build/
+android/app/.cxx/

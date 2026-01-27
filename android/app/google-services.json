@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1014371558302",
+    "project_id": "travelplanner10-b837d",
+    "storage_bucket": "travelplanner10-b837d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014371558302:android:6f73cb1a112d532b13ac8f",
+        "android_client_info": {
+          "package_name": "com.animesh10.TravelPlanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014371558302-bk9h8hrqepanaq37l86jj3pe21dgvdur.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.animesh10.TravelPlanner",
+            "certificate_hash": "c982443a663290f34cb788718145801c21dee55e"
+          }
+        },
+        {
+          "client_id": "1014371558302-hls2il6d74i1mfvn8q9o11qrba83022c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.animesh10.TravelPlanner",
+            "certificate_hash": "e6ba69b93a9b461c1ab02c549af409d0d670a0de"
+          }
+        },
+        {
+          "client_id": "1014371558302-pu9tg0hal59frc7eqqfm8v06tid6slf5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvuXfIH_awydPnmHQQvKxRwNRMQrpZfnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014371558302-pu9tg0hal59frc7eqqfm8v06tid6slf5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

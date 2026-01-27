@@ -68,6 +68,7 @@ export const generateSystemPrompt = (name: string, userDetails: any, tripDetails
 export const sendChatRequest = async (messages: Message[]) => {
     // Log key usage for debugging (masked)
     const keyUsed = OPENROUTER_API_KEY;
+    console.log(`[AI Service] Key loaded: ${keyUsed ? keyUsed.substring(0, 15) + '...' : 'Undefined'}`);
     console.log(`[AI Service] Sending request using Key: ${keyUsed ? '...' + keyUsed.slice(-6) : 'None'}`);
 
     const headers = {
@@ -116,7 +117,7 @@ export const sendChatRequest = async (messages: Message[]) => {
 
     for (const model of models) {
         let retries = 0;
-        const MAX_RETRIES = 3;
+        const MAX_RETRIES = 5;
 
         while (retries <= MAX_RETRIES) {
             try {
@@ -133,8 +134,8 @@ export const sendChatRequest = async (messages: Message[]) => {
 
                 if (isRateLimit && retries < MAX_RETRIES) {
                     retries++;
-                    const delay = retries * 2000;
-                    console.warn(`[AI Service] Rate limited (${model}). Retrying in ${delay / 1000}s... (${retries}/${MAX_RETRIES})`);
+                    const delay = retries * 3000 + Math.random() * 1000; // Average 3.5s, 7s, 10.5s...
+                    console.warn(`[AI Service] Rate limited (${model}). Retrying in ${(delay / 1000).toFixed(1)}s... (${retries}/${MAX_RETRIES})`);
                     await new Promise(resolve => setTimeout(resolve, delay));
                     continue;
                 }
@@ -153,7 +154,18 @@ export const sendChatRequest = async (messages: Message[]) => {
 
     // If we get here, all models failed
     console.warn('[AI Service] All models failed. Last error:', lastError);
+
+    // Provide specific message for Rate Limits
+    let finalError = lastError?.data?.error || lastError?.data || { message: "AI Service Unavailable. Please check your internet or API limits." };
+
+    if (lastError?.status === 429) {
+        finalError = {
+            code: 429,
+            message: "Rate limit exceeded. The free AI model is busy or you have hit your limit. Please try again in a moment."
+        };
+    }
+
     return {
-        error: lastError?.data || { message: "AI Service Unavailable. Please check your internet or API limits." }
+        error: finalError
     };
 };

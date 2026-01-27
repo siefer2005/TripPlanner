@@ -1,0 +1,14 @@
+pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
+plugins { id("com.facebook.react.settings") }
+extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
+rootProject.name = 'com.animesh10.TravelPlanner'
+
+apply from: new File(["node", "--print", "require.resolve('expo/package.json')"].execute(null, rootDir).text.trim(), "../scripts/autolinking.gradle");
+useExpoModules()
+
+include ':app'
+includeBuild('../node_modules/@react-native/gradle-plugin')
+
+// Manually link @livekit/react-native-webrtc because @livekit/react-native expects this specific project name
+include ':livekit_react-native-webrtc'
+project(':livekit_react-native-webrtc').projectDir = new File(rootProject.projectDir, '../node_modules/@livekit/react-native-webrtc/android')

@@ -135,6 +135,23 @@ const LoginScreen: React.FC = () => {
   ----------------------------------- */
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+      <Pressable
+        onPress={async () => {
+          await AsyncStorage.setItem('authToken', 'guest');
+          setToken('guest');
+        }}
+        style={{
+          position: 'absolute',
+          top: 20,
+          right: 20,
+          zIndex: 10,
+          padding: 8,
+        }}>
+        <Text style={{ color: colors.text, fontSize: 16, fontWeight: '600' }}>
+          Skip
+        </Text>
+      </Pressable>
+
       <View style={{ marginTop: 30, alignItems: 'center' }}>
         <Image
           style={{ width: 240, height: 80, resizeMode: 'contain' }}

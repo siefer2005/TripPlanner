@@ -1,0 +1,973 @@
+> Task :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gradle-plugin:shared:compileKotlin UP-TO-DATE
+> Task :gradle-plugin:shared:compileJava NO-SOURCE
+> Task :gradle-plugin:shared:processResources NO-SOURCE
+> Task :gradle-plugin:shared:classes UP-TO-DATE
+> Task :gradle-plugin:shared:jar UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:compileKotlin UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:compileJava NO-SOURCE
+> Task :gradle-plugin:settings-plugin:pluginDescriptors UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:processResources UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:classes UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:jar UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-module-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-module-gradle-plugin:pluginDescriptors UP-TO-DATE
+> Task :expo-module-gradle-plugin:processResources UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:compileKotlin UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:compileJava NO-SOURCE
+> Task :gradle-plugin:react-native-gradle-plugin:pluginDescriptors UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:processResources UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:classes UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:jar UP-TO-DATE
+> Task :expo-module-gradle-plugin:compileKotlin UP-TO-DATE
+> Task :expo-module-gradle-plugin:compileJava NO-SOURCE
+> Task :expo-module-gradle-plugin:classes UP-TO-DATE
+> Task :expo-module-gradle-plugin:jar UP-TO-DATE
+
+> Configure project :expo
+
+Using expo modules
+  - [32mexpo-asset[0m (12.0.12)
+  - [32mexpo-constants[0m (18.0.12)
+  - [32mexpo-file-system[0m (19.0.21)
+  - [32mexpo-font[0m (14.0.10)
+  - [32mexpo-keep-awake[0m (15.0.8)
+  - [32mexpo-modules-core[0m (3.0.29)
+  - [32mexpo-splash-screen[0m (31.0.13)
+
+
+> Task :app:generateAutolinkingPackageList UP-TO-DATE
+> Task :app:generateCodegenSchemaFromJavaScript SKIPPED
+> Task :app:generateCodegenArtifactsFromSchema SKIPPED
+> Task :app:generateReactNativeEntryPoint UP-TO-DATE
+> Task :expo:generateExpoModulesPackageListTask UP-TO-DATE
+> Task :expo:preBuild UP-TO-DATE
+> Task :expo-asset:preBuild UP-TO-DATE
+
+> Task :expo-constants:createExpoConfig
+The NODE_ENV environment variable is required but was not specified. Ensure the project is bundled with Expo CLI or NODE_ENV is set. Using only .env.local and .env
+
+> Task :expo-constants:preBuild
+> Task :expo-file-system:preBuild UP-TO-DATE
+> Task :expo-font:preBuild UP-TO-DATE
+> Task :expo-keep-awake:preBuild UP-TO-DATE
+> Task :expo-modules-core:preBuild UP-TO-DATE
+> Task :expo-splash-screen:preBuild UP-TO-DATE
+> Task :livekit_react-native:preBuild UP-TO-DATE
+> Task :livekit_react-native-webrtc:preBuild UP-TO-DATE
+> Task :react-native-async-storage_async-storage:preBuild UP-TO-DATE
+> Task :react-native-community_datetimepicker:preBuild UP-TO-DATE
+> Task :react-native-google-signin_google-signin:preBuild UP-TO-DATE
+> Task :react-native-linear-gradient:preBuild UP-TO-DATE
+> Task :react-native-maps:preBuild UP-TO-DATE
+> Task :react-native-safe-area-context:preBuild UP-TO-DATE
+> Task :react-native-screens:preBuild UP-TO-DATE
+> Task :react-native-svg:preBuild UP-TO-DATE
+> Task :react-native-tts:preBuild UP-TO-DATE
+> Task :react-native-vector-icons:preBuild UP-TO-DATE
+> Task :react-native-voice_voice:preBuild UP-TO-DATE
+> Task :react-native-webrtc:preBuild UP-TO-DATE
+> Task :app:preBuild
+> Task :app:preDebugBuild
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :expo:preDebugBuild UP-TO-DATE
+> Task :expo:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-asset:preDebugBuild UP-TO-DATE
+> Task :expo-asset:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-constants:preDebugBuild
+> Task :expo-constants:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-file-system:preDebugBuild UP-TO-DATE
+> Task :expo-file-system:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-font:preDebugBuild UP-TO-DATE
+> Task :expo-font:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-keep-awake:preDebugBuild UP-TO-DATE
+> Task :expo-keep-awake:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-modules-core:preDebugBuild UP-TO-DATE
+> Task :expo-modules-core:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-splash-screen:preDebugBuild UP-TO-DATE
+> Task :expo-splash-screen:writeDebugAarMetadata UP-TO-DATE
+> Task :livekit_react-native:preDebugBuild UP-TO-DATE
+> Task :livekit_react-native:writeDebugAarMetadata UP-TO-DATE
+> Task :livekit_react-native-webrtc:preDebugBuild UP-TO-DATE
+> Task :livekit_react-native-webrtc:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-async-storage_async-storage:preDebugBuild UP-TO-DATE
+> Task :react-native-async-storage_async-storage:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-community_datetimepicker:preDebugBuild UP-TO-DATE
+> Task :react-native-community_datetimepicker:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-google-signin_google-signin:preDebugBuild UP-TO-DATE
+> Task :react-native-google-signin_google-signin:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-linear-gradient:preDebugBuild UP-TO-DATE
+> Task :react-native-linear-gradient:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-maps:preDebugBuild UP-TO-DATE
+> Task :react-native-maps:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-safe-area-context:preDebugBuild UP-TO-DATE
+> Task :react-native-safe-area-context:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-screens:preDebugBuild UP-TO-DATE
+> Task :react-native-screens:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-svg:preDebugBuild UP-TO-DATE
+> Task :react-native-svg:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-tts:preDebugBuild UP-TO-DATE
+> Task :react-native-tts:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-vector-icons:preDebugBuild UP-TO-DATE
+> Task :react-native-vector-icons:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-voice_voice:preDebugBuild UP-TO-DATE
+> Task :react-native-voice_voice:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-webrtc:preDebugBuild UP-TO-DATE
+> Task :react-native-webrtc:writeDebugAarMetadata UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:processDebugGoogleServices UP-TO-DATE
+> Task :expo:generateDebugResValues UP-TO-DATE
+> Task :expo:generateDebugResources UP-TO-DATE
+> Task :expo:packageDebugResources UP-TO-DATE
+> Task :expo-asset:generateDebugResValues UP-TO-DATE
+> Task :expo-asset:generateDebugResources UP-TO-DATE
+> Task :expo-asset:packageDebugResources UP-TO-DATE
+> Task :expo-constants:generateDebugResValues UP-TO-DATE
+> Task :expo-constants:generateDebugResources UP-TO-DATE
+> Task :expo-constants:packageDebugResources UP-TO-DATE
+> Task :expo-file-system:generateDebugResValues UP-TO-DATE
+> Task :expo-file-system:generateDebugResources UP-TO-DATE
+> Task :expo-file-system:packageDebugResources UP-TO-DATE
+> Task :expo-font:generateDebugResValues UP-TO-DATE
+> Task :expo-font:generateDebugResources UP-TO-DATE
+> Task :expo-font:packageDebugResources UP-TO-DATE
+> Task :expo-keep-awake:generateDebugResValues UP-TO-DATE
+> Task :expo-keep-awake:generateDebugResources UP-TO-DATE
+> Task :expo-keep-awake:packageDebugResources UP-TO-DATE
+> Task :expo-modules-core:generateDebugResValues UP-TO-DATE
+> Task :expo-modules-core:generateDebugResources UP-TO-DATE
+> Task :expo-modules-core:packageDebugResources UP-TO-DATE
+> Task :expo-splash-screen:generateDebugResValues UP-TO-DATE
+> Task :expo-splash-screen:generateDebugResources UP-TO-DATE
+> Task :expo-splash-screen:packageDebugResources UP-TO-DATE
+> Task :livekit_react-native:generateDebugResValues UP-TO-DATE
+> Task :livekit_react-native:generateDebugResources UP-TO-DATE
+> Task :livekit_react-native:packageDebugResources UP-TO-DATE
+> Task :livekit_react-native-webrtc:generateDebugResValues UP-TO-DATE
+> Task :livekit_react-native-webrtc:generateDebugResources UP-TO-DATE
+> Task :livekit_react-native-webrtc:packageDebugResources UP-TO-DATE
+> Task :react-native-async-storage_async-storage:generateDebugResValues UP-TO-DATE
+> Task :react-native-async-storage_async-storage:generateDebugResources UP-TO-DATE
+> Task :react-native-async-storage_async-storage:packageDebugResources UP-TO-DATE
+> Task :react-native-community_datetimepicker:generateDebugResValues UP-TO-DATE
+> Task :react-native-community_datetimepicker:generateDebugResources UP-TO-DATE
+> Task :react-native-community_datetimepicker:packageDebugResources UP-TO-DATE
+> Task :react-native-google-signin_google-signin:generateDebugResValues UP-TO-DATE
+> Task :react-native-google-signin_google-signin:generateDebugResources UP-TO-DATE
+> Task :react-native-google-signin_google-signin:packageDebugResources UP-TO-DATE
+> Task :react-native-linear-gradient:generateDebugResValues UP-TO-DATE
+> Task :react-native-linear-gradient:generateDebugResources UP-TO-DATE
+> Task :react-native-linear-gradient:packageDebugResources UP-TO-DATE
+> Task :react-native-maps:generateDebugResValues UP-TO-DATE
+> Task :react-native-maps:generateDebugResources UP-TO-DATE
+> Task :react-native-maps:packageDebugResources UP-TO-DATE
+> Task :react-native-safe-area-context:generateDebugResValues UP-TO-DATE
+> Task :react-native-safe-area-context:generateDebugResources UP-TO-DATE
+> Task :react-native-safe-area-context:packageDebugResources UP-TO-DATE
+> Task :react-native-screens:generateDebugResValues UP-TO-DATE
+> Task :react-native-screens:generateDebugResources UP-TO-DATE
+> Task :react-native-screens:packageDebugResources UP-TO-DATE
+> Task :react-native-svg:generateDebugResValues UP-TO-DATE
+> Task :react-native-svg:generateDebugResources UP-TO-DATE
+> Task :react-native-svg:packageDebugResources UP-TO-DATE
+> Task :react-native-tts:generateDebugResValues UP-TO-DATE
+> Task :react-native-tts:generateDebugResources UP-TO-DATE
+> Task :react-native-tts:packageDebugResources UP-TO-DATE
+> Task :react-native-vector-icons:generateDebugResValues UP-TO-DATE
+> Task :react-native-vector-icons:generateDebugResources UP-TO-DATE
+> Task :react-native-vector-icons:packageDebugResources UP-TO-DATE
+> Task :react-native-voice_voice:generateDebugResValues UP-TO-DATE
+> Task :react-native-voice_voice:generateDebugResources UP-TO-DATE
+> Task :react-native-voice_voice:packageDebugResources UP-TO-DATE
+> Task :react-native-webrtc:generateDebugResValues UP-TO-DATE
+> Task :react-native-webrtc:generateDebugResources UP-TO-DATE
+> Task :react-native-webrtc:packageDebugResources UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :expo:extractDeepLinksDebug UP-TO-DATE
+> Task :expo:processDebugManifest UP-TO-DATE
+> Task :expo-asset:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-asset:processDebugManifest UP-TO-DATE
+> Task :expo-constants:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-constants:processDebugManifest UP-TO-DATE
+> Task :expo-file-system:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-file-system:processDebugManifest UP-TO-DATE
+> Task :expo-font:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-font:processDebugManifest UP-TO-DATE
+> Task :expo-keep-awake:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-keep-awake:processDebugManifest UP-TO-DATE
+> Task :expo-modules-core:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-modules-core:processDebugManifest UP-TO-DATE
+> Task :expo-splash-screen:extractDeepLinksDebug UP-TO-DATE
+> Task :expo-splash-screen:processDebugManifest UP-TO-DATE
+> Task :livekit_react-native:extractDeepLinksDebug UP-TO-DATE
+> Task :livekit_react-native:processDebugManifest UP-TO-DATE
+> Task :livekit_react-native-webrtc:extractDeepLinksDebug UP-TO-DATE
+> Task :livekit_react-native-webrtc:processDebugManifest UP-TO-DATE
+> Task :react-native-async-storage_async-storage:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-async-storage_async-storage:processDebugManifest UP-TO-DATE
+> Task :react-native-community_datetimepicker:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-community_datetimepicker:processDebugManifest UP-TO-DATE
+> Task :react-native-google-signin_google-signin:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-google-signin_google-signin:processDebugManifest UP-TO-DATE
+> Task :react-native-linear-gradient:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-linear-gradient:processDebugManifest UP-TO-DATE
+> Task :react-native-maps:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-maps:processDebugManifest UP-TO-DATE
+> Task :react-native-safe-area-context:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-safe-area-context:processDebugManifest UP-TO-DATE
+> Task :react-native-screens:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-screens:processDebugManifest UP-TO-DATE
+> Task :react-native-svg:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-svg:processDebugManifest UP-TO-DATE
+> Task :react-native-tts:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-tts:processDebugManifest UP-TO-DATE
+> Task :react-native-vector-icons:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-vector-icons:processDebugManifest UP-TO-DATE
+> Task :react-native-voice_voice:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-voice_voice:processDebugManifest UP-TO-DATE
+> Task :react-native-webrtc:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-webrtc:processDebugManifest UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :expo:compileDebugLibraryResources UP-TO-DATE
+> Task :expo:parseDebugLocalResources UP-TO-DATE
+> Task :expo:generateDebugRFile UP-TO-DATE
+> Task :expo-asset:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-asset:parseDebugLocalResources UP-TO-DATE
+> Task :expo-asset:generateDebugRFile UP-TO-DATE
+> Task :expo-constants:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-constants:parseDebugLocalResources UP-TO-DATE
+> Task :expo-constants:generateDebugRFile UP-TO-DATE
+> Task :expo-file-system:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-file-system:parseDebugLocalResources UP-TO-DATE
+> Task :expo-file-system:generateDebugRFile UP-TO-DATE
+> Task :expo-font:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-font:parseDebugLocalResources UP-TO-DATE
+> Task :expo-font:generateDebugRFile UP-TO-DATE
+> Task :expo-keep-awake:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-keep-awake:parseDebugLocalResources UP-TO-DATE
+> Task :expo-keep-awake:generateDebugRFile UP-TO-DATE
+> Task :expo-modules-core:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-modules-core:parseDebugLocalResources UP-TO-DATE
+> Task :expo-modules-core:generateDebugRFile UP-TO-DATE
+> Task :expo-splash-screen:compileDebugLibraryResources UP-TO-DATE
+> Task :expo-splash-screen:parseDebugLocalResources UP-TO-DATE
+> Task :expo-splash-screen:generateDebugRFile UP-TO-DATE
+> Task :livekit_react-native:compileDebugLibraryResources UP-TO-DATE
+> Task :livekit_react-native:parseDebugLocalResources UP-TO-DATE
+> Task :livekit_react-native:generateDebugRFile UP-TO-DATE
+> Task :livekit_react-native-webrtc:compileDebugLibraryResources UP-TO-DATE
+> Task :livekit_react-native-webrtc:parseDebugLocalResources UP-TO-DATE
+> Task :livekit_react-native-webrtc:generateDebugRFile UP-TO-DATE
+> Task :react-native-async-storage_async-storage:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-async-storage_async-storage:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-async-storage_async-storage:generateDebugRFile UP-TO-DATE
+> Task :react-native-community_datetimepicker:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-community_datetimepicker:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-community_datetimepicker:generateDebugRFile UP-TO-DATE
+> Task :react-native-google-signin_google-signin:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-google-signin_google-signin:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-google-signin_google-signin:generateDebugRFile UP-TO-DATE
+> Task :react-native-linear-gradient:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-linear-gradient:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-linear-gradient:generateDebugRFile UP-TO-DATE
+> Task :react-native-maps:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-maps:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-maps:generateDebugRFile UP-TO-DATE
+> Task :react-native-safe-area-context:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-safe-area-context:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-safe-area-context:generateDebugRFile UP-TO-DATE
+> Task :react-native-screens:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-screens:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-screens:generateDebugRFile UP-TO-DATE
+> Task :react-native-svg:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-svg:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-svg:generateDebugRFile UP-TO-DATE
+> Task :react-native-tts:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-tts:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-tts:generateDebugRFile UP-TO-DATE
+> Task :react-native-vector-icons:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-vector-icons:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-vector-icons:generateDebugRFile UP-TO-DATE
+> Task :react-native-voice_voice:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-voice_voice:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-voice_voice:generateDebugRFile UP-TO-DATE
+> Task :react-native-webrtc:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-webrtc:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-webrtc:generateDebugRFile UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :expo:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-asset:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-asset:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-modules-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-modules-core:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-modules-core:compileDebugKotlin UP-TO-DATE
+> Task :expo-modules-core:javaPreCompileDebug UP-TO-DATE
+> Task :expo-modules-core:compileDebugJavaWithJavac UP-TO-DATE
+> Task :expo-modules-core:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-asset:compileDebugKotlin UP-TO-DATE
+> Task :expo-asset:javaPreCompileDebug UP-TO-DATE
+> Task :expo-asset:compileDebugJavaWithJavac UP-TO-DATE
+> Task :expo-asset:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-constants:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-constants:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-constants:compileDebugKotlin UP-TO-DATE
+> Task :expo-constants:javaPreCompileDebug UP-TO-DATE
+> Task :expo-constants:compileDebugJavaWithJavac UP-TO-DATE
+> Task :expo-constants:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-file-system:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-file-system:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-file-system:compileDebugKotlin UP-TO-DATE
+> Task :expo-file-system:javaPreCompileDebug UP-TO-DATE
+> Task :expo-file-system:compileDebugJavaWithJavac UP-TO-DATE
+> Task :expo-file-system:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-font:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-font:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-font:compileDebugKotlin UP-TO-DATE
+> Task :expo-font:javaPreCompileDebug UP-TO-DATE
+> Task :expo-font:compileDebugJavaWithJavac UP-TO-DATE
+> Task :expo-font:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-keep-awake:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-keep-awake:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-keep-awake:compileDebugKotlin UP-TO-DATE
+> Task :expo-keep-awake:javaPreCompileDebug UP-TO-DATE
+> Task :expo-keep-awake:compileDebugJavaWithJavac UP-TO-DATE
+> Task :expo-keep-awake:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-splash-screen:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-splash-screen:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-splash-screen:compileDebugKotlin UP-TO-DATE
+> Task :expo-splash-screen:javaPreCompileDebug UP-TO-DATE
+> Task :expo-splash-screen:compileDebugJavaWithJavac UP-TO-DATE
+> Task :expo-splash-screen:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo:compileDebugKotlin UP-TO-DATE
+> Task :expo:javaPreCompileDebug UP-TO-DATE
+> Task :expo:compileDebugJavaWithJavac
+> Task :livekit_react-native:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :livekit_react-native:generateDebugBuildConfig UP-TO-DATE
+> Task :livekit_react-native-webrtc:generateDebugBuildConfig UP-TO-DATE
+> Task :livekit_react-native-webrtc:javaPreCompileDebug UP-TO-DATE
+> Task :livekit_react-native-webrtc:compileDebugJavaWithJavac UP-TO-DATE
+> Task :livekit_react-native-webrtc:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo:bundleLibCompileToJarDebug
+> Task :livekit_react-native:compileDebugKotlin UP-TO-DATE
+> Task :livekit_react-native:javaPreCompileDebug UP-TO-DATE
+> Task :livekit_react-native:compileDebugJavaWithJavac UP-TO-DATE
+> Task :livekit_react-native:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-async-storage_async-storage:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-async-storage_async-storage:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-async-storage_async-storage:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-async-storage_async-storage:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-community_datetimepicker:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-community_datetimepicker:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-community_datetimepicker:compileDebugKotlin UP-TO-DATE
+> Task :react-native-community_datetimepicker:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-community_datetimepicker:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-community_datetimepicker:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-google-signin_google-signin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-google-signin_google-signin:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-google-signin_google-signin:compileDebugKotlin UP-TO-DATE
+> Task :react-native-google-signin_google-signin:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-google-signin_google-signin:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-google-signin_google-signin:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-linear-gradient:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-linear-gradient:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-linear-gradient:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-linear-gradient:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-maps:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-maps:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-maps:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-maps:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-safe-area-context:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-safe-area-context:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-safe-area-context:compileDebugKotlin UP-TO-DATE
+> Task :react-native-safe-area-context:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-safe-area-context:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-safe-area-context:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-screens:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-screens:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-screens:compileDebugKotlin UP-TO-DATE
+> Task :react-native-screens:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-screens:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-screens:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-svg:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-svg:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-svg:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-svg:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-tts:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-tts:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-tts:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-tts:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-vector-icons:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-vector-icons:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-vector-icons:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-vector-icons:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-voice_voice:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-voice_voice:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-voice_voice:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-voice_voice:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-webrtc:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-webrtc:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-webrtc:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-webrtc:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:copyReactNativeVectorIconFonts UP-TO-DATE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :expo:mergeDebugShaders UP-TO-DATE
+> Task :expo:compileDebugShaders NO-SOURCE
+> Task :expo:generateDebugAssets UP-TO-DATE
+> Task :expo:mergeDebugAssets UP-TO-DATE
+> Task :expo-asset:mergeDebugShaders UP-TO-DATE
+> Task :expo-asset:compileDebugShaders NO-SOURCE
+> Task :expo-asset:generateDebugAssets UP-TO-DATE
+> Task :expo-asset:mergeDebugAssets UP-TO-DATE
+> Task :expo-constants:mergeDebugShaders UP-TO-DATE
+> Task :expo-constants:compileDebugShaders NO-SOURCE
+> Task :expo-constants:generateDebugAssets UP-TO-DATE
+> Task :expo-constants:mergeDebugAssets UP-TO-DATE
+> Task :expo-file-system:mergeDebugShaders UP-TO-DATE
+> Task :expo-file-system:compileDebugShaders NO-SOURCE
+> Task :expo-file-system:generateDebugAssets UP-TO-DATE
+> Task :expo-file-system:mergeDebugAssets UP-TO-DATE
+> Task :expo-font:mergeDebugShaders UP-TO-DATE
+> Task :expo-font:compileDebugShaders NO-SOURCE
+> Task :expo-font:generateDebugAssets UP-TO-DATE
+> Task :expo-font:mergeDebugAssets UP-TO-DATE
+> Task :expo-keep-awake:mergeDebugShaders UP-TO-DATE
+> Task :expo-keep-awake:compileDebugShaders NO-SOURCE
+> Task :expo-keep-awake:generateDebugAssets UP-TO-DATE
+> Task :expo-keep-awake:mergeDebugAssets UP-TO-DATE
+> Task :expo-modules-core:mergeDebugShaders UP-TO-DATE
+> Task :expo-modules-core:compileDebugShaders NO-SOURCE
+> Task :expo-modules-core:generateDebugAssets UP-TO-DATE
+> Task :expo-modules-core:mergeDebugAssets UP-TO-DATE
+> Task :expo-splash-screen:mergeDebugShaders UP-TO-DATE
+> Task :expo-splash-screen:compileDebugShaders NO-SOURCE
+> Task :expo-splash-screen:generateDebugAssets UP-TO-DATE
+> Task :expo-splash-screen:mergeDebugAssets UP-TO-DATE
+> Task :livekit_react-native:mergeDebugShaders UP-TO-DATE
+> Task :livekit_react-native:compileDebugShaders NO-SOURCE
+> Task :livekit_react-native:generateDebugAssets UP-TO-DATE
+> Task :livekit_react-native:mergeDebugAssets UP-TO-DATE
+> Task :livekit_react-native-webrtc:mergeDebugShaders UP-TO-DATE
+> Task :livekit_react-native-webrtc:compileDebugShaders NO-SOURCE
+> Task :livekit_react-native-webrtc:generateDebugAssets UP-TO-DATE
+> Task :livekit_react-native-webrtc:mergeDebugAssets UP-TO-DATE
+> Task :react-native-async-storage_async-storage:mergeDebugShaders UP-TO-DATE
+> Task :react-native-async-storage_async-storage:compileDebugShaders NO-SOURCE
+> Task :react-native-async-storage_async-storage:generateDebugAssets UP-TO-DATE
+> Task :react-native-async-storage_async-storage:mergeDebugAssets UP-TO-DATE
+> Task :react-native-community_datetimepicker:mergeDebugShaders UP-TO-DATE
+> Task :react-native-community_datetimepicker:compileDebugShaders NO-SOURCE
+> Task :react-native-community_datetimepicker:generateDebugAssets UP-TO-DATE
+> Task :react-native-community_datetimepicker:mergeDebugAssets UP-TO-DATE
+> Task :react-native-google-signin_google-signin:mergeDebugShaders UP-TO-DATE
+> Task :react-native-google-signin_google-signin:compileDebugShaders NO-SOURCE
+> Task :react-native-google-signin_google-signin:generateDebugAssets UP-TO-DATE
+> Task :react-native-google-signin_google-signin:mergeDebugAssets UP-TO-DATE
+> Task :react-native-linear-gradient:mergeDebugShaders UP-TO-DATE
+> Task :react-native-linear-gradient:compileDebugShaders NO-SOURCE
+> Task :react-native-linear-gradient:generateDebugAssets UP-TO-DATE
+> Task :react-native-linear-gradient:mergeDebugAssets UP-TO-DATE
+> Task :react-native-maps:mergeDebugShaders UP-TO-DATE
+> Task :react-native-maps:compileDebugShaders NO-SOURCE
+> Task :react-native-maps:generateDebugAssets UP-TO-DATE
+> Task :react-native-maps:mergeDebugAssets UP-TO-DATE
+> Task :react-native-safe-area-context:mergeDebugShaders UP-TO-DATE
+> Task :react-native-safe-area-context:compileDebugShaders NO-SOURCE
+> Task :react-native-safe-area-context:generateDebugAssets UP-TO-DATE
+> Task :react-native-safe-area-context:mergeDebugAssets UP-TO-DATE
+> Task :react-native-screens:mergeDebugShaders UP-TO-DATE
+> Task :react-native-screens:compileDebugShaders NO-SOURCE
+> Task :react-native-screens:generateDebugAssets UP-TO-DATE
+> Task :react-native-screens:mergeDebugAssets UP-TO-DATE
+> Task :react-native-svg:mergeDebugShaders UP-TO-DATE
+> Task :react-native-svg:compileDebugShaders NO-SOURCE
+> Task :react-native-svg:generateDebugAssets UP-TO-DATE
+> Task :react-native-svg:mergeDebugAssets UP-TO-DATE
+> Task :react-native-tts:mergeDebugShaders UP-TO-DATE
+> Task :react-native-tts:compileDebugShaders NO-SOURCE
+> Task :react-native-tts:generateDebugAssets UP-TO-DATE
+> Task :react-native-tts:mergeDebugAssets UP-TO-DATE
+> Task :react-native-vector-icons:mergeDebugShaders UP-TO-DATE
+> Task :react-native-vector-icons:compileDebugShaders NO-SOURCE
+> Task :react-native-vector-icons:generateDebugAssets UP-TO-DATE
+> Task :react-native-vector-icons:mergeDebugAssets UP-TO-DATE
+> Task :react-native-voice_voice:mergeDebugShaders UP-TO-DATE
+> Task :react-native-voice_voice:compileDebugShaders NO-SOURCE
+> Task :react-native-voice_voice:generateDebugAssets UP-TO-DATE
+> Task :react-native-voice_voice:mergeDebugAssets UP-TO-DATE
+> Task :react-native-webrtc:mergeDebugShaders UP-TO-DATE
+> Task :react-native-webrtc:compileDebugShaders NO-SOURCE
+> Task :react-native-webrtc:generateDebugAssets UP-TO-DATE
+> Task :react-native-webrtc:mergeDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :livekit_react-native:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-community_datetimepicker:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-google-signin_google-signin:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-safe-area-context:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-screens:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :livekit_react-native-webrtc:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-async-storage_async-storage:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-voice_voice:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-linear-gradient:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-maps:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-svg:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-tts:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-vector-icons:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-webrtc:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-modules-core:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-font:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-splash-screen:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-file-system:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-constants:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-asset:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :expo-keep-awake:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :expo:bundleLibRuntimeToJarDebug
+> Task :expo:processDebugJavaRes
+> Task :expo-asset:processDebugJavaRes UP-TO-DATE
+> Task :expo-constants:processDebugJavaRes UP-TO-DATE
+> Task :expo-file-system:processDebugJavaRes UP-TO-DATE
+> Task :expo-font:processDebugJavaRes UP-TO-DATE
+> Task :expo-keep-awake:processDebugJavaRes UP-TO-DATE
+> Task :expo-modules-core:processDebugJavaRes UP-TO-DATE
+> Task :expo-splash-screen:processDebugJavaRes UP-TO-DATE
+> Task :livekit_react-native:processDebugJavaRes UP-TO-DATE
+> Task :livekit_react-native-webrtc:processDebugJavaRes NO-SOURCE
+> Task :react-native-async-storage_async-storage:processDebugJavaRes NO-SOURCE
+> Task :react-native-community_datetimepicker:processDebugJavaRes UP-TO-DATE
+> Task :react-native-google-signin_google-signin:processDebugJavaRes UP-TO-DATE
+> Task :react-native-linear-gradient:processDebugJavaRes NO-SOURCE
+> Task :react-native-maps:processDebugJavaRes NO-SOURCE
+> Task :react-native-safe-area-context:processDebugJavaRes UP-TO-DATE
+> Task :react-native-screens:processDebugJavaRes UP-TO-DATE
+> Task :react-native-svg:processDebugJavaRes NO-SOURCE
+> Task :react-native-tts:processDebugJavaRes NO-SOURCE
+> Task :react-native-vector-icons:processDebugJavaRes NO-SOURCE
+> Task :react-native-voice_voice:processDebugJavaRes NO-SOURCE
+> Task :react-native-webrtc:processDebugJavaRes NO-SOURCE
+> Task :livekit_react-native:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :react-native-community_datetimepicker:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :react-native-google-signin_google-signin:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :react-native-safe-area-context:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :react-native-screens:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :livekit_react-native-webrtc:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :react-native-async-storage_async-storage:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :react-native-voice_voice:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses FAILED
+> Task :expo:bundleLibRuntimeToDirDebug
+
+> Task :app:compileDebugKotlin
+w: file:///D:/.React/TravelPlanner/android/app/src/main/java/com/com.animesh10.travelplanner/MainApplication.kt:7:8 'class ReactNativeHost : Any' is deprecated. Deprecated in Java.
+w: file:///D:/.React/TravelPlanner/android/app/src/main/java/com/com.animesh10.travelplanner/MainApplication.kt:17:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///D:/.React/TravelPlanner/android/app/src/main/java/com/com.animesh10.travelplanner/MainApplication.kt:17:33 'class ReactNativeHost : Any' is deprecated. Deprecated in Java.
+
+[Incubating] Problems report is available at: file:///D:/.React/TravelPlanner/android/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:checkDebugDuplicateClasses'.
+> A failure occurred while executing com.android.build.gradle.internal.tasks.CheckDuplicatesRunnable
+   > Duplicate class org.webrtc.AddIceObserver found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.AndroidVideoDecoder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.AndroidVideoDecoder$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.AndroidVideoDecoder$DecodedTextureMetadata found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.AndroidVideoDecoder$FrameInfo found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ApplicationContextProvider found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.AudioDecoderFactoryFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.AudioEncoderFactoryFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.AudioProcessingFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.AudioSource found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.AudioTrack found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.BaseBitrateAdjuster found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.BitrateAdjuster found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.BuiltinAudioDecoderFactoryFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.BuiltinAudioEncoderFactoryFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CallSessionFileRotatingLogSink found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CalledByNative found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CalledByNativeUnchecked found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera1Capturer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera1Enumerator found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera1Session found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera1Session$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera1Session$2 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera1Session$SessionState found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera2Capturer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera2Enumerator found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera2Session found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera2Session$CameraCaptureCallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera2Session$CameraStateCallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera2Session$CaptureSessionCallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Camera2Session$SessionState found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraCapturer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraCapturer$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraCapturer$2 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraCapturer$3 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraCapturer$4 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraCapturer$5 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraCapturer$6 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraCapturer$7 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraCapturer$8 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraCapturer$9 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraCapturer$SwitchState found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraEnumerationAndroid found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraEnumerationAndroid$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraEnumerationAndroid$2 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraEnumerationAndroid$CaptureFormat found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraEnumerationAndroid$CaptureFormat$FramerateRange found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraEnumerationAndroid$ClosestComparator found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraEnumerator found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraSession found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraSession$CreateSessionCallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraSession$Events found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraSession$FailureType found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraVideoCapturer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraVideoCapturer$CameraEventsHandler found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraVideoCapturer$CameraStatistics found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraVideoCapturer$CameraStatistics$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraVideoCapturer$CameraSwitchHandler found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CameraVideoCapturer$MediaRecorderHandler found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CandidatePairChangeEvent found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CapturerObserver found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ContextUtils found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CryptoOptions found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CryptoOptions$Builder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CryptoOptions$SFrame found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.CryptoOptions$Srtp found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.DataChannel found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.DataChannel$Buffer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.DataChannel$Init found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.DataChannel$Observer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.DataChannel$State found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.DefaultVideoDecoderFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.DefaultVideoEncoderFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.DtmfSender found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.DynamicBitrateAdjuster found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase$ConfigBuilder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase$Context found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase$EglConnection found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase10 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase10$Context found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase10$EglConnection found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase10Impl found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase10Impl$1FakeSurfaceHolder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase10Impl$Context found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase10Impl$EglConnection found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase14 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase14$Context found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase14$EglConnection found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase14Impl found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase14Impl$Context found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglBase14Impl$EglConnection found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglRenderer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglRenderer$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglRenderer$2 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglRenderer$EglSurfaceCreation found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglRenderer$ErrorCallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglRenderer$FrameListener found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglRenderer$FrameListenerAndParams found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglThread found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglThread$HandlerWithExceptionCallbacks found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglThread$ReleaseMonitor found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EglThread$RenderUpdate found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Empty found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EncodedImage found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EncodedImage$Builder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.EncodedImage$FrameType found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.FecControllerFactoryFactoryInterface found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.FileVideoCapturer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.FileVideoCapturer$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.FileVideoCapturer$VideoReader found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.FileVideoCapturer$VideoReaderY4M found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.FrameDecryptor found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.FrameEncryptor found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.FramerateBitrateAdjuster found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.GlGenericDrawer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.GlGenericDrawer$ShaderCallbacks found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.GlGenericDrawer$ShaderType found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.GlRectDrawer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.GlRectDrawer$ShaderCallbacks found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.GlShader found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.GlTextureFrameBuffer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.GlUtil found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.GlUtil$GlOutOfMemoryException found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.H264Utils found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.HardwareVideoDecoderFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.HardwareVideoDecoderFactory$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.HardwareVideoEncoder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.HardwareVideoEncoder$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.HardwareVideoEncoder$BusyCount found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.HardwareVideoEncoderFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.HardwareVideoEncoderFactory$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Histogram found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.IceCandidate found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.IceCandidateErrorEvent found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.JNILogging found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.JavaI420Buffer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.JniCommon found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.JniHelper found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.LibaomAv1Encoder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.LibvpxVp8Decoder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.LibvpxVp8Encoder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.LibvpxVp9Decoder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.LibvpxVp9Encoder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Loggable found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Logging found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Logging$Severity found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaCodecUtils found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaCodecUtils$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaCodecVideoDecoderFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaCodecWrapper found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaCodecWrapperFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaCodecWrapperFactoryImpl found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaCodecWrapperFactoryImpl$MediaCodecWrapperImpl found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaConstraints found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaConstraints$KeyValuePair found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaSource found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaSource$State found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaStream found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaStreamTrack found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaStreamTrack$MediaType found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.MediaStreamTrack$State found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Metrics found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Metrics$HistogramInfo found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NV12Buffer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NV21Buffer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NativeAndroidVideoTrackSource found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NativeCapturerObserver found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NativeLibrary found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NativeLibrary$DefaultLoader found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NativeLibraryLoader found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NativePeerConnectionFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetEqFactoryFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkChangeDetector found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkChangeDetector$ConnectionType found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkChangeDetector$IPAddress found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkChangeDetector$NetworkInformation found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkChangeDetector$Observer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkChangeDetectorFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkControllerFactoryFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkMonitor found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkMonitor$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkMonitor$2 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkMonitor$InstanceHolder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkMonitor$NetworkObserver found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkMonitorAutoDetect found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkMonitorAutoDetect$ConnectivityManagerDelegate found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkMonitorAutoDetect$NetworkState found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkMonitorAutoDetect$SimpleNetworkCallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkMonitorAutoDetect$WifiDirectManagerDelegate found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkMonitorAutoDetect$WifiManagerDelegate found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkPreference found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.NetworkStatePredictorFactoryFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$AdapterType found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$BundlePolicy found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$CandidateNetworkPolicy found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$ContinualGatheringPolicy found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$IceConnectionState found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$IceGatheringState found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$IceServer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$IceServer$Builder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$IceTransportsType found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$KeyType found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$Observer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$PeerConnectionState found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$PortPrunePolicy found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$RTCConfiguration found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$RtcpMuxPolicy found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$SdpSemantics found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$SignalingState found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$TcpCandidatePolicy found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnection$TlsCertPolicy found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnectionDependencies found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnectionDependencies$Builder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnectionFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnectionFactory$Builder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnectionFactory$InitializationOptions found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnectionFactory$InitializationOptions$Builder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnectionFactory$Options found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PeerConnectionFactory$ThreadInfo found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PlatformSoftwareVideoDecoderFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.PlatformSoftwareVideoDecoderFactory$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Predicate found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Predicate$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Predicate$2 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Predicate$3 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Priority found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RTCStats found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RTCStatsCollectorCallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RTCStatsReport found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RefCountDelegate found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RefCounted found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RenderSynchronizer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RenderSynchronizer$Listener found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RendererCommon found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RendererCommon$GlDrawer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RendererCommon$RendererEvents found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RendererCommon$ScalingType found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RendererCommon$VideoLayoutMeasure found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtcCertificatePem found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpCapabilities found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpCapabilities$CodecCapability found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpCapabilities$HeaderExtensionCapability found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpParameters found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpParameters$Codec found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpParameters$DegradationPreference found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpParameters$Encoding found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpParameters$HeaderExtension found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpParameters$Rtcp found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpReceiver found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpReceiver$Observer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpSender found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpTransceiver found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpTransceiver$RtpTransceiverDirection found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.RtpTransceiver$RtpTransceiverInit found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SSLCertificateVerifier found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ScreenCapturerAndroid found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ScreenCapturerAndroid$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SdpObserver found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SessionDescription found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SessionDescription$Type found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.Size found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SoftwareVideoDecoderFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SoftwareVideoDecoderFactory$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SoftwareVideoEncoderFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SoftwareVideoEncoderFactory$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.StatsObserver found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.StatsReport found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.StatsReport$Value found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SurfaceEglRenderer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SurfaceTextureHelper found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SurfaceTextureHelper$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SurfaceTextureHelper$2 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SurfaceTextureHelper$3 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SurfaceTextureHelper$FrameRefMonitor found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.SurfaceViewRenderer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.TextureBufferImpl found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.TextureBufferImpl$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.TextureBufferImpl$2 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.TextureBufferImpl$RefCountMonitor found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ThreadUtils found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ThreadUtils$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ThreadUtils$1CaughtException found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ThreadUtils$1Result found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ThreadUtils$2 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ThreadUtils$3 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ThreadUtils$4 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ThreadUtils$BlockingOperation found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.ThreadUtils$ThreadChecker found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.TimestampAligner found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.TurnCustomizer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoCapturer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoCodecInfo found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoCodecMimeType found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoCodecStatus found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoDecoder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoDecoder$Callback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoDecoder$DecodeInfo found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoDecoder$Settings found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoDecoderFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoDecoderFallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoDecoderWrapper found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$BitrateAllocation found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$Callback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$Capabilities found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$CodecSpecificInfo found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$CodecSpecificInfoAV1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$CodecSpecificInfoH264 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$CodecSpecificInfoVP8 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$CodecSpecificInfoVP9 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$EncodeInfo found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$EncoderInfo found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$RateControlParameters found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$ResolutionBitrateLimits found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$ScalingSettings found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoder$Settings found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoderFactory found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoderFactory$VideoEncoderSelector found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoderFallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoEncoderWrapper found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoFileRenderer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoFileRenderer$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoFrame found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoFrame$Buffer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoFrame$I420Buffer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoFrame$TextureBuffer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoFrame$TextureBuffer$Type found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoFrameBufferType found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoFrameDrawer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoFrameDrawer$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoFrameDrawer$YuvUploader found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoProcessor found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoProcessor$FrameAdaptationParameters found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoSink found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoSource found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoSource$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoSource$AspectRatio found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.VideoTrack found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.WebRtcClassLoader found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.WrappedNativeI420Buffer found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.WrappedNativeVideoDecoder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.WrappedNativeVideoEncoder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.YuvConverter found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.YuvConverter$ShaderCallbacks found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.YuvHelper found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.AudioDeviceModule found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.JavaAudioDeviceModule found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.JavaAudioDeviceModule$AudioRecordErrorCallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.JavaAudioDeviceModule$AudioRecordStartErrorCode found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.JavaAudioDeviceModule$AudioRecordStateCallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.JavaAudioDeviceModule$AudioSamples found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.JavaAudioDeviceModule$AudioTrackErrorCallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.JavaAudioDeviceModule$AudioTrackStartErrorCode found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.JavaAudioDeviceModule$AudioTrackStateCallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.JavaAudioDeviceModule$Builder found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.JavaAudioDeviceModule$SamplesReadyCallback found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.LowLatencyAudioBufferManager found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.VolumeLogger found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.VolumeLogger$LogVolumeTask found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.WebRtcAudioEffects found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.WebRtcAudioManager found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.WebRtcAudioRecord found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.WebRtcAudioRecord$1 found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.WebRtcAudioRecord$AudioRecordThread found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.WebRtcAudioTrack found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.WebRtcAudioTrack$AudioTrackThread found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     Duplicate class org.webrtc.audio.WebRtcAudioUtils found in modules android-137.7151.04.aar -> jetified-android-137.7151.04-runtime (io.github.webrtc-sdk:android:137.7151.04) and webrtc-124.0.0.aar -> jetified-webrtc-124.0.0-runtime (org.jitsi:webrtc:124.0.0)
+     
+     Learn how to fix dependency resolution errors at https://d.android.com/r/tools/classpath-sync-errors
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 10s
+428 actionable tasks: 8 executed, 420 up-to-date

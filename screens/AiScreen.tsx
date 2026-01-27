@@ -110,7 +110,7 @@ const AiScreen: React.FC = () => {
         try {
             Tts.setDefaultLanguage('en-US');
         } catch (e) {
-            console.log("TTS language set failed", e);
+            console.error("TTS language set failed", e);
         }
 
         const onFinish = () => {
@@ -221,7 +221,7 @@ const AiScreen: React.FC = () => {
     };
 
     const onSpeechError = (e: any) => {
-        console.log('Voice Error Event:', e);
+        console.error('Voice Error Event:', e);
         // Ignore "No match" error (Code 7) as it just means silence/unrecognized speech
         if (e.error?.code === '7' || e.error?.message?.includes('7/No match')) {
             setIsListening(false);
@@ -317,7 +317,7 @@ const AiScreen: React.FC = () => {
                 setMessages([initialMsg, promptMsg, promptMsg2, promptMsg3]);
             }
         } catch (e) {
-            console.log('Failed to load history', e);
+            console.error('Failed to load history', e);
         }
     };
 
@@ -325,7 +325,7 @@ const AiScreen: React.FC = () => {
         try {
             await AsyncStorage.setItem(`chat_history_${name || 'default'}`, JSON.stringify(newMessages));
         } catch (e) {
-            console.log('Failed to save history', e);
+            console.error('Failed to save history', e);
         }
     };
 
@@ -391,9 +391,15 @@ const AiScreen: React.FC = () => {
                 }
             } else {
 
-                console.warn("AI Error Detailed:", data);
-                const errorMsg = data.error?.message || (typeof data.error === 'object' ? JSON.stringify(data.error) : String(data.error)) || "Failed to get response from AI";
-                Alert.alert("AI Error", errorMsg);
+                console.log("🔴 AI Error Detailed:", JSON.stringify(data));
+                const errorObj = data.error || {};
+                const errorMsg = errorObj.message || (typeof errorObj === 'object' ? JSON.stringify(errorObj) : String(errorObj)) || "Failed to get response from AI";
+
+                if (errorObj.code === 401 || (typeof errorMsg === 'string' && errorMsg.includes('User not found'))) {
+                    Alert.alert("Authentication Error", "Your API Key is invalid or the account is missing. Please check OPENROUTER_API_KEY in your .env file.");
+                } else {
+                    Alert.alert("AI Error", errorMsg);
+                }
             }
 
 

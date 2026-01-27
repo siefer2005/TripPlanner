@@ -76,7 +76,7 @@ const HomeScreen: React.FC = () => {
   useEffect(() => {
     const fetchUser = async (): Promise<void> => {
       const token = await AsyncStorage.getItem('authToken');
-      if (token) {
+      if (token && token !== 'guest') {
         const decoded = jwtDecode<DecodedToken>(token);
         setUserId(decoded.userId);
       }

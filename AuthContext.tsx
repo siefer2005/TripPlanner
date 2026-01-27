@@ -36,11 +36,11 @@ interface AuthProviderProps {
 
 export const AuthContext = createContext<AuthContextType>({
   token: null,
-  setToken: () => {},
+  setToken: () => { },
   userId: '',
-  setUserId: () => {},
+  setUserId: () => { },
   userInfo: null,
-  setUserInfo: () => {},
+  setUserInfo: () => { },
 });
 
 /* ----------------------------------
@@ -67,7 +67,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const fetchUser = async (): Promise<void> => {
       const storedToken = await AsyncStorage.getItem('authToken');
 
-      if (!storedToken) return;
+      if (!storedToken || storedToken === 'guest') return;
 
       try {
         const decoded = jwtDecode<DecodedToken>(storedToken);
