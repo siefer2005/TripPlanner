@@ -73,6 +73,9 @@ const LoginScreen: React.FC = () => {
   /* ----------------------------------
      Google Login Handler
   ----------------------------------- */
+  /* ----------------------------------
+     Google Login Handler
+  ----------------------------------- */
   const handleGoogleLogin = async (): Promise<void> => {
     setLoading(true);
     setError('');
@@ -87,6 +90,22 @@ const LoginScreen: React.FC = () => {
         throw new Error('Google ID Token not found');
       }
 
+      console.log('Got ID Token check:', extractedIdToken.substring(0, 20) + '...');
+
+      // Debug: Validate token on client side first
+      try {
+        const verifyRes = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${extractedIdToken}`);
+        if (!verifyRes.ok) {
+          const verifyText = await verifyRes.text();
+          console.error("Client Token Verification Failed:", verifyText);
+          throw new Error(`Invalid Google Token: ${verifyText}`);
+        }
+        console.log("Client Token Verification Success");
+      } catch (verifyError) {
+        console.error("Token verification error:", verifyError);
+        throw verifyError;
+      }
+
       const backendResponse = await fetch(`${API_URL}/google-login`, {
         method: 'POST',
         headers: {
@@ -97,18 +116,14 @@ const LoginScreen: React.FC = () => {
         }),
       }).catch((fetchError) => {
         console.error('Fetch error:', fetchError);
-        throw new Error('Cannot connect to server. Please check if the backend is running and you are on the same Wi-Fi.');
+        throw new Error('Networking error. Check your connection.');
       });
 
       console.log('Response status:', backendResponse.status);
 
       if (!backendResponse.ok) {
-        try {
-          const errorData = await backendResponse.json();
-          throw new Error(errorData.message || `HTTP error! status: ${backendResponse.status}`);
-        } catch (jsonError) {
-          throw new Error(`Server error: ${backendResponse.status} ${backendResponse.statusText}`);
-        }
+        const errorData = await backendResponse.json().catch(() => ({}));
+        throw new Error(errorData.message || `Server Error: ${backendResponse.status}`);
       }
 
       const data: BackendLoginResponse = await backendResponse.json();
@@ -117,9 +132,11 @@ const LoginScreen: React.FC = () => {
       console.log('Login successful, saving token');
       await AsyncStorage.setItem('authToken', token);
       setToken(token);
-    } catch (err: unknown) {
+    } catch (err: any) {
       console.log('Login Error:', err);
-      setError(err instanceof Error ? err.message : JSON.stringify(err));
+      let msg = err.message || 'Something went wrong';
+      if (msg.includes('400')) msg = 'Login Failed: Server rejected the token.';
+      setError(msg);
     } finally {
       setLoading(false);
     }

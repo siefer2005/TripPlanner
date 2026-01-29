@@ -1,6 +1,9 @@
 import { OPENROUTER_API_KEY as ENV_OPENROUTER_API_KEY } from '@env';
 
-export const OPENROUTER_API_KEY = ENV_OPENROUTER_API_KEY;
+export const OPENROUTER_API_KEY = ENV_OPENROUTER_API_KEY ? ENV_OPENROUTER_API_KEY.trim() : '';
+if (!OPENROUTER_API_KEY) {
+    console.warn('OPENROUTER_API_KEY is not defined in @env');
+}
 
 export type Message = {
     id: string;

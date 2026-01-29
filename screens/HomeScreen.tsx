@@ -128,10 +128,19 @@ const HomeScreen: React.FC = () => {
       const response = await fetch(
         `${API_URL}/trips/${userId}`
       );
-      const data: Trip[] = await response.json();
-      setTrips(data);
+
+      const data = await response.json();
+
+      if (response.ok && Array.isArray(data)) {
+        setTrips(data);
+      } else {
+        console.error('CreateTrip: Failed to fetch trips', data);
+        setTrips([]); // Fallback to empty array
+      }
+
     } catch (error) {
       console.error('Error fetching trips:', error);
+      setTrips([]);
     } finally {
       setLoading(false);
     }

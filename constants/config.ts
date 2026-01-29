@@ -3,7 +3,7 @@
 
 const ENV: string = 'prod'; // Change to 'prod' before building APK
 
-const LOCAL_API_URL = 'http://10.108.127.154:8000'; // YOUR LOCAL IP
+const LOCAL_API_URL = 'http://10.119.216.154:8000'; // YOUR LOCAL IP
 const PROD_API_URL = 'https://tripplanner-gxjm.onrender.com'; // ADD YOUR RENDER URL HERE after deployment
 
 export const API_URL = ENV === 'prod' ? PROD_API_URL : LOCAL_API_URL;

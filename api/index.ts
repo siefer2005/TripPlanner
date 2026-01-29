@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
-dotenv.config();
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -330,16 +331,27 @@ app.post('/google-login', async (req: Request, res: Response) => {
       `https://oauth2.googleapis.com/tokeninfo?id_token=${idToken}`,
     );
 
-    console.log('Token info fetched:', response);
-
     const data: any = await response.json();
-    console.log('Token info data:', data);
+
+    // Check if Google returned an error
+    if (data.error) {
+      console.error('Google Token Validation Failed:', data);
+      return res.status(400).json({ message: `Google Token Error: ${data.error_description || data.error}` });
+    }
 
     const { sub, email, name, picture } = data;
+
+    if (!sub || !email) {
+      console.error('Google Token missing sub or email:', data);
+      return res.status(400).json({ message: 'Invalid Google Token: Missing user info' });
+    }
+
+    console.log(`Processing Google User: ${email} (${sub})`);
 
     let user = await User.findOne({ googleId: sub });
 
     if (!user) {
+      console.log('User not found, creating new user...');
       user = new User({
         googleId: sub,
         email,
@@ -347,6 +359,9 @@ app.post('/google-login', async (req: Request, res: Response) => {
         photo: picture,
       });
       await user.save();
+      console.log('New user created:', user._id);
+    } else {
+      console.log('User found:', user._id);
     }
 
     const token = jwt.sign(
@@ -356,8 +371,9 @@ app.post('/google-login', async (req: Request, res: Response) => {
     );
 
     res.status(200).json({ user, token });
-  } catch (error) {
-    res.status(400).json({ message: 'Google authentication failed' });
+  } catch (error: any) {
+    console.error('Google Login Detailed Error:', error); // Log the actual error for Render/Live Tail
+    res.status(500).json({ message: 'Google authentication failed', error: error.message || String(error) });
   }
 });
 
